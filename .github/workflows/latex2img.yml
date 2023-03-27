@@ -1,0 +1,43 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Turn latex into image
+
+on:
+  push:
+    branches: [ "main" ]
+env: 
+   needCommit: ${{ 'false' }}
+permissions:
+  contents: write
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+        
+    - name: execute py script
+      run: |
+        echo "needCommit=`python latex2img.py`" >> $GITHUB_ENV
+          
+    - name: commit files
+      if: ${{ env.needCommit == 'true'}}
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git commit -m "latex to img" -a
+
+    - name: push changes
+      if: ${{ env.needCommit == 'true'}}
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main  
