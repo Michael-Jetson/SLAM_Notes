@@ -332,7 +332,7 @@ $$
 
 激光器Laser发射激光，在照射到物体Object后，反射回摄像头成像平面的位置为点P，由于激光器和摄像头间隔了一段距离，所以依照光学路径，不同距离的物体将会成像在不同的位置。按照三角公式进行计算，就能推导出被测物体的距离
 
-![image-20230327224748148](/home/robot/文档/Notes/img/image-20230327224748148.png)
+![image-20230327224748148](https://github.com/Michael-Jetson/SLAM_Notes/blob/main/img/image-20230327224748148.png?raw=true)
 
 ![三角测距法](https://img-blog.csdn.net/20170904153359742?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTHJpc2Zpc2g=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
