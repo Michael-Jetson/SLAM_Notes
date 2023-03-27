@@ -7,46 +7,38 @@
 好处：
 - 任何方向平移
 - 结构简单
-- 全驱动系统（在$xy\theta$三个方向上的运动是可以完全解耦的，可以分别进行分析，更容易分析）
+- 全驱动系统（在![](https://www.zhihu.com/equation?tex=xy%5Ctheta)三个方向上的运动是可以完全解耦的，可以分别进行分析，更容易分析）
 - 可以进行运动学分解
 以车辆中心为原点，以一个轮子的方向为X正方向建立坐标系
 ### 运动分解——平移X
-- 我们设$v_x\neq 0,V_y=\omega=0$
-- $V_1=0*V_x$
-- $V_2=-sin{60}*V_x$
-- $V_3=sin{60}*V_x$
+- 我们设![](https://www.zhihu.com/equation?tex=v_x%5Cneq%200%2CV_y%3D%5Comega%3D0)
+- ![](https://www.zhihu.com/equation?tex=V_1%3D0%2AV_x)
+- ![](https://www.zhihu.com/equation?tex=V_2%3D-sin%7B60%7D%2AV_x)
+- ![](https://www.zhihu.com/equation?tex=V_3%3Dsin%7B60%7D%2AV_x)
 ### 运动分解——平移Y
 - 我们设
-- $V_1=0*V_x$
-- $V_2=-sin{60}*V_x$
-- $V_3=sin{60}*V_x$
+- ![](https://www.zhihu.com/equation?tex=V_1%3D0%2AV_x)
+- ![](https://www.zhihu.com/equation?tex=V_2%3D-sin%7B60%7D%2AV_x)
+- ![](https://www.zhihu.com/equation?tex=V_3%3Dsin%7B60%7D%2AV_x)
 
 ### 运动分解——旋转
 
 - 旋转的时候，明显各点角速度一致
-- 我们设$V_x=0,V_y=0,V_\theta\neq 0$
-- $V_1=0*V_x$
-- $V_2=-sin{60}*V_x$
-- $V_3=sin{60}*V_x$
+- 我们设![](https://www.zhihu.com/equation?tex=V_x%3D0%2CV_y%3D0%2CV_%5Ctheta%5Cneq%200)
+- ![](https://www.zhihu.com/equation?tex=V_1%3D0%2AV_x)
+- ![](https://www.zhihu.com/equation?tex=V_2%3D-sin%7B60%7D%2AV_x)
+- ![](https://www.zhihu.com/equation?tex=V_3%3Dsin%7B60%7D%2AV_x)
 
 ### 运动合成
 
 因为每种情况下只有一种分量不为0，所以我们将运动进行合成
-$$
-\begin{align}
-&V_{1}  =0*V_{x} +1*V_{y}  +&d*V_{\theta}& \\
-&V_{1}  =0*V_{x} +1*V_{y} +&d*V_{\theta} &
-\end{align}
-$$
 
-$$
-\begin{align}
-	y & =d & z & =1\\
-	y & =cx+d & z & =x+1\\
-	y_{12} & =bx^{2}+cx+d & z & =x_{2}+x+1\nonumber \\
-	y(x) & =ax^{3}+bx^{2}+cx+d & z & =x^{3}+x^{2}+x+1
-\end{align}
-$$
+![](https://www.zhihu.com/equation?tex=%0A%5Cbegin%7Balign%7D%0A%26V_%7B1%7D%20%20%3D0%2AV_%7Bx%7D%20%2B1%2AV_%7By%7D%20%20%2B%26d%2AV_%7B%5Ctheta%7D%26%20%5C%5C%0A%26V_%7B1%7D%20%20%3D0%2AV_%7Bx%7D%20%2B1%2AV_%7By%7D%20%2B%26d%2AV_%7B%5Ctheta%7D%20%26%0A%5Cend%7Balign%7D%0A)
+
+
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cbegin%7Balign%7D%0A%09y%20%26%20%3Dd%20%26%20z%20%26%20%3D1%5C%5C%0A%09y%20%26%20%3Dcx%2Bd%20%26%20z%20%26%20%3Dx%2B1%5C%5C%0A%09y_%7B12%7D%20%26%20%3Dbx%5E%7B2%7D%2Bcx%2Bd%20%26%20z%20%26%20%3Dx_%7B2%7D%2Bx%2B1%5Cnonumber%20%5C%5C%0A%09y%28x%29%20%26%20%3Dax%5E%7B3%7D%2Bbx%5E%7B2%7D%2Bcx%2Bd%20%26%20z%20%26%20%3Dx%5E%7B3%7D%2Bx%5E%7B2%7D%2Bx%2B1%0A%5Cend%7Balign%7D%0A)
+
 
 ## 正向/逆向运动学
 
@@ -61,20 +53,14 @@ $$
 
 ### 递推公式
 
-- $(x,y,\theta)$为底盘当前位姿
+- ![](https://www.zhihu.com/equation?tex=%28x%2Cy%2C%5Ctheta%29)为底盘当前位姿
 
-- $(dx,dy,d\theta)$为底盘运动学结算增量
+- ![](https://www.zhihu.com/equation?tex=%28dx%2Cdy%2Cd%5Ctheta%29)为底盘运动学结算增量
 
 - 我们假设一个机器人底盘到世界坐标系的变换
-  $$
-  T_{V2W}=\left[
-  \begin{matrix}
-  cos\theta&-sin\theta &x\\
-  sin\theta & cos\theta &0\\
-  0&0&1
-  \end{matrix}
-  \right]
-  $$
+  
+![](https://www.zhihu.com/equation?tex=%0A%20%20T_%7BV2W%7D%3D%5Cleft%5B%0A%20%20%5Cbegin%7Bmatrix%7D%0A%20%20cos%5Ctheta%26-sin%5Ctheta%20%26x%5C%5C%0A%20%20sin%5Ctheta%20%26%20cos%5Ctheta%20%260%5C%5C%0A%20%200%260%261%0A%20%20%5Cend%7Bmatrix%7D%0A%20%20%5Cright%5D%0A%20%20)
+
 
 - 但是实际上所测得的增量是有误差的，误差来源：系统误差（比如说轮子测量误差）和随机误差（比如说打滑）
 
@@ -86,147 +72,75 @@ $$
 
 可以不关心底层的具体细节直接使用，但是最好基于自己的模型进行修改
 
-线性方程组$Ax=b$（工程里面最常见的情况）
+线性方程组![](https://www.zhihu.com/equation?tex=Ax%3Db)（工程里面最常见的情况）
 
-- $A$为$m\times n$的矩阵
-- $x$为$n\times 1$的向量是我们要求解的状态量，可以是：机器人的位姿，机器人特征点的位置
+- ![](https://www.zhihu.com/equation?tex=A)为![](https://www.zhihu.com/equation?tex=m%5Ctimes%20n)的矩阵
+- ![](https://www.zhihu.com/equation?tex=x)为![](https://www.zhihu.com/equation?tex=n%5Ctimes%201)的向量是我们要求解的状态量，可以是：机器人的位姿，机器人特征点的位置
 - 每一行表示一个约束，每一列表示一个自由度或者说未知数的维数
-- 当$m=n$的时候，约束正好，称为适定方程组，有唯一解（A可以有广义逆，所以必定有解）
-- 当$m<n$时，约束不足，称为欠定方程组，方程组有无穷多解
-- 当$m>n$时，约束过多，称为超定方程组，通常无解，也是实际情况中最经常碰到的情况
+- 当![](https://www.zhihu.com/equation?tex=m%3Dn)的时候，约束正好，称为适定方程组，有唯一解（A可以有广义逆，所以必定有解）
+- 当![](https://www.zhihu.com/equation?tex=m%3Cn)时，约束不足，称为欠定方程组，方程组有无穷多解
+- 当![](https://www.zhihu.com/equation?tex=m%3En)时，约束过多，称为超定方程组，通常无解，也是实际情况中最经常碰到的情况
 - 因为实际上我们一次采样的数量会非常多（每次采样就是一个约束），所以往往会得到一个超定方程组，因为噪声原因，他们彼此之间都是矛盾的，所以是无法得到一个解的
 
 ### 最小二乘解
 
-- 绝大多数情况都是$m>n$，是超定方程组
+- 绝大多数情况都是![](https://www.zhihu.com/equation?tex=m%3En)，是超定方程组
 - 无解，但是我们可以寻找最接近真实解的解
 - 无解但是有最小二乘解
-- 通解：$x^*=(A^TA)^{-1}A^Tb$
-- 注意，在这里$Ax=b$是一个病态的方程，这是因为给$b$加一点微小的扰动，就会造成方程组解的巨大变化，所以在实际工程里面，我们会对$A^TA$进行一个QR分解来让解更稳定
+- 通解：![](https://www.zhihu.com/equation?tex=x%5E%2A%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb)
+- 注意，在这里![](https://www.zhihu.com/equation?tex=Ax%3Db)是一个病态的方程，这是因为给![](https://www.zhihu.com/equation?tex=b)加一点微小的扰动，就会造成方程组解的巨大变化，所以在实际工程里面，我们会对![](https://www.zhihu.com/equation?tex=A%5ETA)进行一个QR分解来让解更稳定
 
 ### 线性空间角度看最小二乘法
 
-- $Ax$表示$A$的列向量空间$S$，这是因为当$x$取尽每一个值的时候，$Ax$就表示$A$的列向量张成的组合，即列向量空间，或者叫$A$的列空间
+- ![](https://www.zhihu.com/equation?tex=Ax)表示![](https://www.zhihu.com/equation?tex=A)的列向量空间![](https://www.zhihu.com/equation?tex=S)，这是因为当![](https://www.zhihu.com/equation?tex=x)取尽每一个值的时候，![](https://www.zhihu.com/equation?tex=Ax)就表示![](https://www.zhihu.com/equation?tex=A)的列向量张成的组合，即列向量空间，或者叫![](https://www.zhihu.com/equation?tex=A)的列空间
 
-- 方程组无解就意味着向量$b$不在$S$中
+- 方程组无解就意味着向量![](https://www.zhihu.com/equation?tex=b)不在![](https://www.zhihu.com/equation?tex=S)中
 
-- 显然，最近的解即为：向量$b$在$S$中的投影
+- 显然，最近的解即为：向量![](https://www.zhihu.com/equation?tex=b)在![](https://www.zhihu.com/equation?tex=S)中的投影
 
-- 我们设$Ax^*$为向量$b$在空间$S$中的投影，显然$(b-Ax^*)$垂直于空间$S$
+- 我们设![](https://www.zhihu.com/equation?tex=Ax%5E%2A)为向量![](https://www.zhihu.com/equation?tex=b)在空间![](https://www.zhihu.com/equation?tex=S)中的投影，显然![](https://www.zhihu.com/equation?tex=%28b-Ax%5E%2A%29)垂直于空间![](https://www.zhihu.com/equation?tex=S)
 
-- 显然$(b-Ax^*)$与矩阵$A$的每一个列向量都垂直，那么显然有
-  $$
-  a_1^T(b-Ax^*)=0\\
-  a_2^T(b-Ax^*)=0\\
-  \cdots \\
-  a_n^T(b-Ax^*)=0
-  $$
+- 显然![](https://www.zhihu.com/equation?tex=%28b-Ax%5E%2A%29)与矩阵![](https://www.zhihu.com/equation?tex=A)的每一个列向量都垂直，那么显然有
+  
+![](https://www.zhihu.com/equation?tex=%0A%20%20a_1%5ET%28b-Ax%5E%2A%29%3D0%5C%5C%0A%20%20a_2%5ET%28b-Ax%5E%2A%29%3D0%5C%5C%0A%20%20%5Ccdots%20%5C%5C%0A%20%20a_n%5ET%28b-Ax%5E%2A%29%3D0%0A%20%20)
+
   即有
-  $$
-  A^T(b-Ax^*)=0\\
-  A^Tb=A^TAx^*\\
-  x^*=(A^TA)^{-1}A^Tb
-  $$
+  
+![](https://www.zhihu.com/equation?tex=%0A%20%20A%5ET%28b-Ax%5E%2A%29%3D0%5C%5C%0A%20%20A%5ETb%3DA%5ETAx%5E%2A%5C%5C%0A%20%20x%5E%2A%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb%0A%20%20)
+
   
 
 ## 直线拟合
 
-我们假设有这种理想情况：数据完美符合直线$y=5x+2$
+我们假设有这种理想情况：数据完美符合直线![](https://www.zhihu.com/equation?tex=y%3D5x%2B2)
 
 ![image-20230327182708046](https://github.com/Michael-Jetson/SLAM_Notes/blob/main/img/image-20230327182708046.png?raw=true)
 
 但是实际上采样会混入噪声，所以我们有了采样数据
 
-$$
-x=(1,2,3,4,5,6,7,8,9,10)\\
-y=(6.9918,14.2987,16.2019,22.4263,25.6191,33.2563,35.7755,42.0298,47.9954,53.9545)
-$$
+
+![](https://www.zhihu.com/equation?tex=%0Ax%3D%281%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%29%5C%5C%0Ay%3D%286.9918%2C14.2987%2C16.2019%2C22.4263%2C25.6191%2C33.2563%2C35.7755%2C42.0298%2C47.9954%2C53.9545%29%0A)
+
 我们构建方程组：
-$$
-\left [ 
-\begin{matrix}
-x_1 &1\\
-x_2 &1\\
-\vdots & \vdots \\
-x_n &1
-\end{matrix}
-\right]
-*
-\left [ 
-\begin{matrix}
-a\\
-b
-\end{matrix}
-\right]
-=
-\left [ 
-\begin{matrix}
-y_1 \\
-y_2 \\
-\vdots \\
-y_n
-\end{matrix}
-\right]
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cleft%20%5B%20%0A%5Cbegin%7Bmatrix%7D%0Ax_1%20%261%5C%5C%0Ax_2%20%261%5C%5C%0A%5Cvdots%20%26%20%5Cvdots%20%5C%5C%0Ax_n%20%261%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%2A%0A%5Cleft%20%5B%20%0A%5Cbegin%7Bmatrix%7D%0Aa%5C%5C%0Ab%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%3D%0A%5Cleft%20%5B%20%0A%5Cbegin%7Bmatrix%7D%0Ay_1%20%5C%5C%0Ay_2%20%5C%5C%0A%5Cvdots%20%5C%5C%0Ay_n%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A)
+
 即有
-$$
-Ax=b
-$$
+
+![](https://www.zhihu.com/equation?tex=%0AAx%3Db%0A)
+
 于是我们进行拟合
-$$
-A^TA=
-\left [ 
-\begin{matrix}
-x_1 &x_2& \cdots &x_n\\
-1&1&\cdots&1
-\end{matrix}
-\right]
-*
-\left [ 
-\begin{matrix}
-x_1 &1\\
-x_2 &1\\
-\vdots & \vdots \\
-x_n &1\\
-\end{matrix}
-\right]
-=
-\left [ 
-\begin{matrix}
-\sum \limits ^n_{i=1}x^2_i &\sum \limits ^n_{i=1}x_i \\
-\sum \limits ^n_{i=1}x_i&n\\ 
-\end{matrix}
-\right]
-\\
-(A^TA)^{-1}=
-\left [ 
-\begin{matrix}
-\frac{-n}{B} &\frac{\sum \limits ^n_{i=1}x^2_i }{B}  \\
-\frac{\sum \limits ^n_{i=1}x_i}{B}&\frac{\sum \limits ^n_{i=1}x^2_i}{B}\\ 
-\end{matrix}
-\right]，其中B=
-(\sum \limits ^n_{i=1}x_i)^2-n\sum \limits ^n_{i=1}x_i^2
-\\
-解得：x=
-\left [ 
-\begin{matrix}
-\frac{n\sum x_iy_i-\sum x_i \sum y_i}{n\sum x_i^2-\sum x_i\sum x_i}\\
-\frac{\sum x_i^2\sum y_i-\sum x_iy_i\sum x_i}{n\sum x_i^2-\sum x_i\sum x_i}
-\end{matrix}
-\right]
-$$
+
+![](https://www.zhihu.com/equation?tex=%0AA%5ETA%3D%0A%5Cleft%20%5B%20%0A%5Cbegin%7Bmatrix%7D%0Ax_1%20%26x_2%26%20%5Ccdots%20%26x_n%5C%5C%0A1%261%26%5Ccdots%261%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%2A%0A%5Cleft%20%5B%20%0A%5Cbegin%7Bmatrix%7D%0Ax_1%20%261%5C%5C%0Ax_2%20%261%5C%5C%0A%5Cvdots%20%26%20%5Cvdots%20%5C%5C%0Ax_n%20%261%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%3D%0A%5Cleft%20%5B%20%0A%5Cbegin%7Bmatrix%7D%0A%5Csum%20%5Climits%20%5En_%7Bi%3D1%7Dx%5E2_i%20%26%5Csum%20%5Climits%20%5En_%7Bi%3D1%7Dx_i%20%5C%5C%0A%5Csum%20%5Climits%20%5En_%7Bi%3D1%7Dx_i%26n%5C%5C%20%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5C%5C%0A%28A%5ETA%29%5E%7B-1%7D%3D%0A%5Cleft%20%5B%20%0A%5Cbegin%7Bmatrix%7D%0A%5Cfrac%7B-n%7D%7BB%7D%20%26%5Cfrac%7B%5Csum%20%5Climits%20%5En_%7Bi%3D1%7Dx%5E2_i%20%7D%7BB%7D%20%20%5C%5C%0A%5Cfrac%7B%5Csum%20%5Climits%20%5En_%7Bi%3D1%7Dx_i%7D%7BB%7D%26%5Cfrac%7B%5Csum%20%5Climits%20%5En_%7Bi%3D1%7Dx%5E2_i%7D%7BB%7D%5C%5C%20%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%EF%BC%8C%E5%85%B6%E4%B8%ADB%3D%0A%28%5Csum%20%5Climits%20%5En_%7Bi%3D1%7Dx_i%29%5E2-n%5Csum%20%5Climits%20%5En_%7Bi%3D1%7Dx_i%5E2%0A%5C%5C%0A%E8%A7%A3%E5%BE%97%EF%BC%9Ax%3D%0A%5Cleft%20%5B%20%0A%5Cbegin%7Bmatrix%7D%0A%5Cfrac%7Bn%5Csum%20x_iy_i-%5Csum%20x_i%20%5Csum%20y_i%7D%7Bn%5Csum%20x_i%5E2-%5Csum%20x_i%5Csum%20x_i%7D%5C%5C%0A%5Cfrac%7B%5Csum%20x_i%5E2%5Csum%20y_i-%5Csum%20x_iy_i%5Csum%20x_i%7D%7Bn%5Csum%20x_i%5E2-%5Csum%20x_i%5Csum%20x_i%7D%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A)
+
 代入数据有：
-$$
-\sum x_i^2=385\\
-\sum x_i=55\\
-\sum x_iy_i=2059.7039\\
-\sum y_i=298.5494
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Csum%20x_i%5E2%3D385%5C%5C%0A%5Csum%20x_i%3D55%5C%5C%0A%5Csum%20x_iy_i%3D2059.7039%5C%5C%0A%5Csum%20y_i%3D298.5494%0A)
+
 解得：
-$$
-a=\frac{2059.7039*10-298.5494*55}{385*10-55*55}=5.063\\
-b=\frac{385*298.5494-2059.7039*55}{385*10-55*55}=2.009
-$$
+
+![](https://www.zhihu.com/equation?tex=%0Aa%3D%5Cfrac%7B2059.7039%2A10-298.5494%2A55%7D%7B385%2A10-55%2A55%7D%3D5.063%5C%5C%0Ab%3D%5Cfrac%7B385%2A298.5494-2059.7039%2A55%7D%7B385%2A10-55%2A55%7D%3D2.009%0A)
+
 
 拟合效果如图
 
@@ -242,74 +156,24 @@ $$
 
 ## 直接线性方法标定里程计
 
-- 我们使用激光雷达的scan-match数据作为真值$u^*_i$，因为我们认为激光雷达的观测值比里程计要准确，这里$u_i^*$表示第$i$帧和第$j$帧之间的相对位姿关系，这里用$P_i$表示第$i$帧的位姿，于是有$u_i=P^{-1}_iP_j$
+- 我们使用激光雷达的scan-match数据作为真值![](https://www.zhihu.com/equation?tex=u%5E%2A_i)，因为我们认为激光雷达的观测值比里程计要准确，这里![](https://www.zhihu.com/equation?tex=u_i%5E%2A)表示第![](https://www.zhihu.com/equation?tex=i)帧和第![](https://www.zhihu.com/equation?tex=j)帧之间的相对位姿关系，这里用![](https://www.zhihu.com/equation?tex=P_i)表示第![](https://www.zhihu.com/equation?tex=i)帧的位姿，于是有![](https://www.zhihu.com/equation?tex=u_i%3DP%5E%7B-1%7D_iP_j)
 
-- 里程计测量得到的数据为$u_i$
+- 里程计测量得到的数据为![](https://www.zhihu.com/equation?tex=u_i)
 
-- 假设他们之间成线性关系$u_i^*=X*u_i$
+- 假设他们之间成线性关系![](https://www.zhihu.com/equation?tex=u_i%5E%2A%3DX%2Au_i)
 
-  其中：因为我们是在二维平面上进行标定，所以$u_i$这些都是三维向量，$u_i=(u_{ix},u_{iy},u_{i\theta})$
-  $$
-  X=
-  \left[
-  \begin{matrix}
-  x_{11}&x_{12}&x_{13}\\
-  x_{21}&x_{22}&x_{23}\\
-  x_{31}&x_{32}&x_{33}\\
-  \end{matrix}
-  \right]
-  $$
+  其中：因为我们是在二维平面上进行标定，所以![](https://www.zhihu.com/equation?tex=u_i)这些都是三维向量，![](https://www.zhihu.com/equation?tex=u_i%3D%28u_%7Bix%7D%2Cu_%7Biy%7D%2Cu_%7Bi%5Ctheta%7D%29)
+  
+![](https://www.zhihu.com/equation?tex=%0A%20%20X%3D%0A%20%20%5Cleft%5B%0A%20%20%5Cbegin%7Bmatrix%7D%0A%20%20x_%7B11%7D%26x_%7B12%7D%26x_%7B13%7D%5C%5C%0A%20%20x_%7B21%7D%26x_%7B22%7D%26x_%7B23%7D%5C%5C%0A%20%20x_%7B31%7D%26x_%7B32%7D%26x_%7B33%7D%5C%5C%0A%20%20%5Cend%7Bmatrix%7D%0A%20%20%5Cright%5D%0A%20%20)
+
   
 
 （因为我们认为里程计是有累计误差的，是不准确的，所以我们需要一种更准确的方式来校准里程计，我们这里使用scan-match也就是使用激光雷达的扫描数据计算里程计，即激光里程计，显然这种方式没有累计误差，会更准确。在这里我们不考虑如何计算激光里程计或者激光里程计是怎么来的，我们只需要知道有这种里程计可以使用即可）
 
 对于每一组数据，可得
-$$
-u_{ix}*x_{11}+u_{iy}*x_{12}+u_{i\theta}*x_{13}=u_{ix}^*\\
-u_{ix}*x_{21}+u_{iy}*x_{22}+u_{i\theta}*x_{23}=u_{iy}^*\\
-u_{ix}*x_{31}+u_{iy}*x_{32}+u_{i\theta}*x_{33}=u_{i\theta}^*\\
-\left[
-\begin{matrix}
-u_{ix}&u_{iy}&u_{i\theta}&0&0&0&0&0&0\\
-0&0&0&u_{ix}&u_{iy}&u_{i\theta}&0&0&0\\
-0&0&0&0&0&0&u_{ix}&u_{iy}&u_{i\theta}\\
-\end{matrix}
-\right]
-\left[
-\begin{matrix}
-x_{11}\\
-\vdots\\
-x_{33}
-\end{matrix}
-\right]
-=
-\left[
-\begin{matrix}
-u_{ix}^*\\
-u_{iy}^*\\
-u_{i\theta}^*\\
-\end{matrix}
-\right]\\
-A=
-\left[
-\begin{matrix}
-A_1\\
-\vdots\\
-A_n\\
-\end{matrix}
-\right]
-\hspace{3em}
-b=
-\left[
-\begin{matrix}
-b_1\\
-\vdots\\
-b_n\\
-\end{matrix}
-\right]
-\hspace{3em}
-\vec{X}=(A^TA)^{-1}A^Tb
-$$
+
+![](https://www.zhihu.com/equation?tex=%0Au_%7Bix%7D%2Ax_%7B11%7D%2Bu_%7Biy%7D%2Ax_%7B12%7D%2Bu_%7Bi%5Ctheta%7D%2Ax_%7B13%7D%3Du_%7Bix%7D%5E%2A%5C%5C%0Au_%7Bix%7D%2Ax_%7B21%7D%2Bu_%7Biy%7D%2Ax_%7B22%7D%2Bu_%7Bi%5Ctheta%7D%2Ax_%7B23%7D%3Du_%7Biy%7D%5E%2A%5C%5C%0Au_%7Bix%7D%2Ax_%7B31%7D%2Bu_%7Biy%7D%2Ax_%7B32%7D%2Bu_%7Bi%5Ctheta%7D%2Ax_%7B33%7D%3Du_%7Bi%5Ctheta%7D%5E%2A%5C%5C%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Au_%7Bix%7D%26u_%7Biy%7D%26u_%7Bi%5Ctheta%7D%260%260%260%260%260%260%5C%5C%0A0%260%260%26u_%7Bix%7D%26u_%7Biy%7D%26u_%7Bi%5Ctheta%7D%260%260%260%5C%5C%0A0%260%260%260%260%260%26u_%7Bix%7D%26u_%7Biy%7D%26u_%7Bi%5Ctheta%7D%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Ax_%7B11%7D%5C%5C%0A%5Cvdots%5C%5C%0Ax_%7B33%7D%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Au_%7Bix%7D%5E%2A%5C%5C%0Au_%7Biy%7D%5E%2A%5C%5C%0Au_%7Bi%5Ctheta%7D%5E%2A%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%5C%5C%0AA%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0AA_1%5C%5C%0A%5Cvdots%5C%5C%0AA_n%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Chspace%7B3em%7D%0Ab%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Ab_1%5C%5C%0A%5Cvdots%5C%5C%0Ab_n%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Chspace%7B3em%7D%0A%5Cvec%7BX%7D%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb%0A)
+
 
 # 激光雷达运动畸变去除
 
@@ -337,9 +201,9 @@ $$
 ![三角测距法](https://img-blog.csdn.net/20170904153359742?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTHJpc2Zpc2g=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 在这里，摄像头观测到激光的时候，激光穿过焦点，在成像平面上的位置为P，离焦点在垂点
-$$
-\tan \beta
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Ctan%20%5Cbeta%0A)
+
 
 
 ### 对比
