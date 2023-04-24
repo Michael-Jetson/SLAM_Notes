@@ -36,46 +36,16 @@ slam是什么呢？slam就是同时建图与定位，我们先不用学术的说
 
 ### 向量运算
 
-对于向量$a,b$
+对于向量![](https://www.zhihu.com/equation?tex=a%2Cb)
 
 定义内积（也就是点乘）：
-$$
-a \cdot b=a^Tb=\sum\limits^3_{i=1}a_ib_i=\vert a \vert \vert b\vert \cos <a,b>
-$$
-定义外积（结果是一个与两个向量都垂直的向量）：
-$$
-\begin{align}
-a\times b&=
-\left|
-\begin{matrix}
-\bold{i}&\bold{j}&\bold{k}\\
-a_1&a_2&a_3\\
-b_1&b_2&b_3\\
-\end{matrix}
-\right|\\
-&=
-(a_2b_3-a_3b_2)\bold{i}+(a_3b_1-a_1b_3)\bold{j}+(a_1b_2-a_2b_1)\bold{k}\\
 
-&=
-\left[
-\begin{matrix}
-a_2b_3-a_3b_2\\
-a_3b_1-a_1b_3\\
-a_1b_2-a_2b_1\\
-\end{matrix}
-\right]\\
-&=
-\left[
-\begin{matrix}
-0&-a_3&a_2\\
-a_3&0&-a_1\\
--a_2&a_1&0\\
-\end{matrix}
-\right]b\\
-&\triangleq
-a^\land b
-\end{align}
-$$
+![](https://www.zhihu.com/equation?tex=%0Aa%20%5Ccdot%20b%3Da%5ETb%3D%5Csum%5Climits%5E3_%7Bi%3D1%7Da_ib_i%3D%5Cvert%20a%20%5Cvert%20%5Cvert%20b%5Cvert%20%5Ccos%20%3Ca%2Cb%3E%0A)
+
+定义外积（结果是一个与两个向量都垂直的向量）：
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cbegin%7Balign%7D%0Aa%5Ctimes%20b%26%3D%0A%5Cleft%7C%0A%5Cbegin%7Bmatrix%7D%0A%5Cbold%7Bi%7D%26%5Cbold%7Bj%7D%26%5Cbold%7Bk%7D%5C%5C%0Aa_1%26a_2%26a_3%5C%5C%0Ab_1%26b_2%26b_3%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%7C%5C%5C%0A%26%3D%0A%28a_2b_3-a_3b_2%29%5Cbold%7Bi%7D%2B%28a_3b_1-a_1b_3%29%5Cbold%7Bj%7D%2B%28a_1b_2-a_2b_1%29%5Cbold%7Bk%7D%5C%5C%0A%0A%26%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Aa_2b_3-a_3b_2%5C%5C%0Aa_3b_1-a_1b_3%5C%5C%0Aa_1b_2-a_2b_1%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%5C%5C%0A%26%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0A0%26-a_3%26a_2%5C%5C%0Aa_3%260%26-a_1%5C%5C%0A-a_2%26a_1%260%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5Db%5C%5C%0A%26%5Ctriangleq%0Aa%5E%5Cland%20b%0A%5Cend%7Balign%7D%0A)
+
 
 ### 坐标变换
 
@@ -89,79 +59,44 @@ $$
 
 ### 齐次坐标
 
-$\tilde{a}=\left[\begin{matrix}a\\1\end{matrix}\right]，在摄影几何里面非常常见，乘以非零常数的时候仍然表达同一个坐标$
+![](https://www.zhihu.com/equation?tex=%5Ctilde%7Ba%7D%3D%5Cleft%5B%5Cbegin%7Bmatrix%7Da%5C%5C1%5Cend%7Bmatrix%7D%5Cright%5D%EF%BC%8C%E5%9C%A8%E6%91%84%E5%BD%B1%E5%87%A0%E4%BD%95%E9%87%8C%E9%9D%A2%E9%9D%9E%E5%B8%B8%E5%B8%B8%E8%A7%81%EF%BC%8C%E4%B9%98%E4%BB%A5%E9%9D%9E%E9%9B%B6%E5%B8%B8%E6%95%B0%E7%9A%84%E6%97%B6%E5%80%99%E4%BB%8D%E7%84%B6%E8%A1%A8%E8%BE%BE%E5%90%8C%E4%B8%80%E4%B8%AA%E5%9D%90%E6%A0%87)
 
 即：
-$$
-\tilde{a}=\left[\begin{matrix}a\\1\end{matrix}\right]=k\left[\begin{matrix}a\\1\end{matrix}\right]
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Ctilde%7Ba%7D%3D%5Cleft%5B%5Cbegin%7Bmatrix%7Da%5C%5C1%5Cend%7Bmatrix%7D%5Cright%5D%3Dk%5Cleft%5B%5Cbegin%7Bmatrix%7Da%5C%5C1%5Cend%7Bmatrix%7D%5Cright%5D%0A)
+
 
 ### 欧式群
 
-变换矩阵的集合称为特殊欧式群$SE(3)$（Special Euclidean Group）
-$$
-SE(3)=
-\left\{
-T=
-\left[
-\begin{matrix}
-R&t\\
-0^T&1\\
-\end{matrix}
-\right]
-\in
-\mathbb{R}^{4\times 4}
-\vert
-R\in SO(3),t\in \mathbb{R}^3
-\right.
-$$
+变换矩阵的集合称为特殊欧式群![](https://www.zhihu.com/equation?tex=SE%283%29)（Special Euclidean Group）
+
+![](https://www.zhihu.com/equation?tex=%0ASE%283%29%3D%0A%5Cleft%5C%7B%0AT%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0AR%26t%5C%5C%0A0%5ET%261%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Cin%0A%5Cmathbb%7BR%7D%5E%7B4%5Ctimes%204%7D%0A%5Cvert%0AR%5Cin%20SO%283%29%2Ct%5Cin%20%5Cmathbb%7BR%7D%5E3%0A%5Cright.%0A)
+
 逆形式：
-$$
-T^{-1}=
-\left[
-\begin{matrix}
-R^T&-R^Tt\\
-0^T&1\\
-\end{matrix}
-\right]
-$$
+
+![](https://www.zhihu.com/equation?tex=%0AT%5E%7B-1%7D%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0AR%5ET%26-R%5ETt%5C%5C%0A0%5ET%261%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A)
+
 
 ### 欧拉旋转定理（Euler's rotation theorem）
 
 刚体在三维空间里的一般运动，可以分解为刚体上某一点的平移，以及绕经过此点的旋转轴的转动
 
-即两个坐标系直接的运动可以完全用$R，t$描述
-$$
-a^{\prime}=Ra+t
-$$
+即两个坐标系直接的运动可以完全用![](https://www.zhihu.com/equation?tex=R%EF%BC%8Ct)描述
+
+![](https://www.zhihu.com/equation?tex=%0Aa%5E%7B%5Cprime%7D%3DRa%2Bt%0A)
+
 但是，如果使用旋转矩阵加平移向量，在复合情况下会有不便之处
 
-如果有$b=R_1a+t_1$，$c=R_2b+t_2$
+如果有![](https://www.zhihu.com/equation?tex=b%3DR_1a%2Bt_1)，![](https://www.zhihu.com/equation?tex=c%3DR_2b%2Bt_2)
 
 那么复合形式就是
-$$
-c=R_2(R_1a+t_1)+t_2
-$$
+
+![](https://www.zhihu.com/equation?tex=%0Ac%3DR_2%28R_1a%2Bt_1%29%2Bt_2%0A)
+
 如果使用齐次形式，那么就比较方便
-$$
-\left[
-\begin{matrix}
-\tilde{a}\\1
-\end{matrix}
-\right]
-=
-\left[
-\begin{matrix}
-R&t\\
-0^T&1\\
-\end{matrix}
-\right]
-\left[\begin{matrix}a\\1\end{matrix}\right]
-\triangleq
-T\left[\begin{matrix}a\\1\end{matrix}\right]
-\\
-\tilde{b}=T_1\tilde{a},\tilde{c}=T_2\tilde{b}\Rightarrow \tilde{c}=T_2T_1\tilde{b}
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0A%5Ctilde%7Ba%7D%5C%5C1%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0AR%26t%5C%5C%0A0%5ET%261%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Cleft%5B%5Cbegin%7Bmatrix%7Da%5C%5C1%5Cend%7Bmatrix%7D%5Cright%5D%0A%5Ctriangleq%0AT%5Cleft%5B%5Cbegin%7Bmatrix%7Da%5C%5C1%5Cend%7Bmatrix%7D%5Cright%5D%0A%5C%5C%0A%5Ctilde%7Bb%7D%3DT_1%5Ctilde%7Ba%7D%2C%5Ctilde%7Bc%7D%3DT_2%5Ctilde%7Bb%7D%5CRightarrow%20%5Ctilde%7Bc%7D%3DT_2T_1%5Ctilde%7Bb%7D%0A)
+
 
 ## 旋转向量与欧拉角
 
@@ -194,19 +129,19 @@ $$
 这是一种节省空间而且没有奇异性的表达形式，可以用来描述旋转
 
 2D 情况下，可用单位复数表达旋转
-$$
-z=x+iy=\rho e^{i\theta}
-$$
+
+![](https://www.zhihu.com/equation?tex=%0Az%3Dx%2Biy%3D%5Crho%20e%5E%7Bi%5Ctheta%7D%0A)
+
 三维情况下，四元数就是复数的扩充
 
 四元数（Quaternion）
 
 **如何使用四元数描述旋转**
 
-设有点$p$，在经历了一次四元数$q$表示的旋转之后，得到了$p^\prime$，他们的关系如何表述
-$$
-p^\prime=qpq^{-1}
-$$
+设有点![](https://www.zhihu.com/equation?tex=p)，在经历了一次四元数![](https://www.zhihu.com/equation?tex=q)表示的旋转之后，得到了![](https://www.zhihu.com/equation?tex=p%5E%5Cprime)，他们的关系如何表述
+
+![](https://www.zhihu.com/equation?tex=%0Ap%5E%5Cprime%3Dqpq%5E%7B-1%7D%0A)
+
 
 ## 程序设计
 
@@ -222,58 +157,37 @@ $$
 
 ### 问题
 
-首先我们知道，运动$x$是可以被观测的，也就是说，我们可以使用一个观测模型$R,t$来描述，或者用一个变换矩阵$T$来描述
+首先我们知道，运动![](https://www.zhihu.com/equation?tex=x)是可以被观测的，也就是说，我们可以使用一个观测模型![](https://www.zhihu.com/equation?tex=R%2Ct)来描述，或者用一个变换矩阵![](https://www.zhihu.com/equation?tex=T)来描述
 
-但是，在SLAM中有一个问题，值是估计出来的，如果我们发现不准确，那么就应该进行调整，得到新的估计，那么我们设调整后的旋转平移为$R^\prime,t^\prime$，设他们直接相差一个微小量$\Delta R,\Delta t$，即有
-$$
-t^\prime=t+\Delta t\\
-R^\prime =R+\Delta R
-$$
-但是，我们知道$R$对乘法封闭，但是对加减是不封闭的，自然也没办法进行求导，因为优化是必须基于导数的，但是如果有一个函数$u(R)$，那么有
-$$
-\frac{du}{dR}=\lim\limits_{\Delta R\to 0}\frac{u(R+\Delta R)-u(R)}{\Delta R}
-$$
+但是，在SLAM中有一个问题，值是估计出来的，如果我们发现不准确，那么就应该进行调整，得到新的估计，那么我们设调整后的旋转平移为![](https://www.zhihu.com/equation?tex=R%5E%5Cprime%2Ct%5E%5Cprime)，设他们直接相差一个微小量![](https://www.zhihu.com/equation?tex=%5CDelta%20R%2C%5CDelta%20t)，即有
+
+![](https://www.zhihu.com/equation?tex=%0At%5E%5Cprime%3Dt%2B%5CDelta%20t%5C%5C%0AR%5E%5Cprime%20%3DR%2B%5CDelta%20R%0A)
+
+但是，我们知道![](https://www.zhihu.com/equation?tex=R)对乘法封闭，但是对加减是不封闭的，自然也没办法进行求导，因为优化是必须基于导数的，但是如果有一个函数![](https://www.zhihu.com/equation?tex=u%28R%29)，那么有
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cfrac%7Bdu%7D%7BdR%7D%3D%5Clim%5Climits_%7B%5CDelta%20R%5Cto%200%7D%5Cfrac%7Bu%28R%2B%5CDelta%20R%29-u%28R%29%7D%7B%5CDelta%20R%7D%0A)
+
 但是由于其性质，我们无法完成这个求导操作，自然无法完成优化
 
 ## 群
 
-三维旋转矩阵构成了特殊正交群$SO(3)$（Special Orthogonal Group）
-$$
-SO(3)=
-\left\{
-R
-\in
-\mathbb{R}^{3\times 3}
-\vert
-RR^T=I,det(R)=1
-\right\}
-$$
+三维旋转矩阵构成了特殊正交群![](https://www.zhihu.com/equation?tex=SO%283%29)（Special Orthogonal Group）
+
+![](https://www.zhihu.com/equation?tex=%0ASO%283%29%3D%0A%5Cleft%5C%7B%0AR%0A%5Cin%0A%5Cmathbb%7BR%7D%5E%7B3%5Ctimes%203%7D%0A%5Cvert%0ARR%5ET%3DI%2Cdet%28R%29%3D1%0A%5Cright%5C%7D%0A)
 
 
-三维变换矩阵的集合称为特殊欧式群$SE(3)$（Special Euclidean Group）
-$$
-SE(3)=
-\left\{
-T=
-\left[
-\begin{matrix}
-R&t\\
-0^T&1\\
-\end{matrix}
-\right]
-\in
-\mathbb{R}^{4\times 4}
-\vert
-R\in SO(3),t\in \mathbb{R}^3
-\right\}
-$$
+
+三维变换矩阵的集合称为特殊欧式群![](https://www.zhihu.com/equation?tex=SE%283%29)（Special Euclidean Group）
+
+![](https://www.zhihu.com/equation?tex=%0ASE%283%29%3D%0A%5Cleft%5C%7B%0AT%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0AR%26t%5C%5C%0A0%5ET%261%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Cin%0A%5Cmathbb%7BR%7D%5E%7B4%5Ctimes%204%7D%0A%5Cvert%0AR%5Cin%20SO%283%29%2Ct%5Cin%20%5Cmathbb%7BR%7D%5E3%0A%5Cright%5C%7D%0A)
+
 那么什么是群？
 
 群是一种集合加上一种运算的代数结构（容易验证，旋转或者变换矩阵集合与矩阵乘法构成群，因此称为旋转矩阵群和变换矩阵群）
 
-记集合为$A$，运算为$\cdot$，那么当运算满足以下性质时，称二元组$(A,\cdot)$构成群
+记集合为![](https://www.zhihu.com/equation?tex=A)，运算为![](https://www.zhihu.com/equation?tex=%5Ccdot)，那么当运算满足以下性质时，称二元组![](https://www.zhihu.com/equation?tex=%28A%2C%5Ccdot%29)构成群
 
-1. 封闭性：$1$
+1. 封闭性：![](https://www.zhihu.com/equation?tex=1)
 
 ## 李群
 
@@ -281,9 +195,9 @@ $$
 
 既是群也是流形
 
-直观上看，一个刚体能够连续地在空间中运动，故$SO(3)$和$SE(3)$都是李群。
+直观上看，一个刚体能够连续地在空间中运动，故![](https://www.zhihu.com/equation?tex=SO%283%29)和![](https://www.zhihu.com/equation?tex=SE%283%29)都是李群。
 
-但是，$SO(3)$和$SE(3)$只有定义良好的乘法，没有加法，所以难以进行取极限、求导等操作。
+但是，![](https://www.zhihu.com/equation?tex=SO%283%29)和![](https://www.zhihu.com/equation?tex=SE%283%29)只有定义良好的乘法，没有加法，所以难以进行取极限、求导等操作。
 
 ## 李代数
 
@@ -291,30 +205,29 @@ $$
 
 从旋转矩阵引出李代数
 
-我们考虑任意旋转矩阵$R$，满足$RR^T=I$
+我们考虑任意旋转矩阵![](https://www.zhihu.com/equation?tex=R)，满足![](https://www.zhihu.com/equation?tex=RR%5ET%3DI)
 
-在连续运动过程中，显然$R$是连续时间的函数，我们记为$R(t)R(t)^T=I$
+在连续运动过程中，显然![](https://www.zhihu.com/equation?tex=R)是连续时间的函数，我们记为![](https://www.zhihu.com/equation?tex=R%28t%29R%28t%29%5ET%3DI)
 
 两侧对时间求导
-$$
-\dot{R}(t)R(t)^T+R(t)\dot{R}(t)^T=0\\
-\dot{R}(t)R(t)^T=-(\dot{R}(t)R(t)^T)^T
-$$
-如果我们将$\dot{R}(t)R(t)^T$看做一个整体，我们就发现其为一个反对称矩阵
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cdot%7BR%7D%28t%29R%28t%29%5ET%2BR%28t%29%5Cdot%7BR%7D%28t%29%5ET%3D0%5C%5C%0A%5Cdot%7BR%7D%28t%29R%28t%29%5ET%3D-%28%5Cdot%7BR%7D%28t%29R%28t%29%5ET%29%5ET%0A)
+
+如果我们将![](https://www.zhihu.com/equation?tex=%5Cdot%7BR%7D%28t%29R%28t%29%5ET)看做一个整体，我们就发现其为一个反对称矩阵
 
 我们记为
-$$
-\dot{R}(t)R(t)^T=\phi(t)^\land
-$$
-两边右乘$R(t)$
-$$
-\dot{R}(t)R(t)^TR(t)=\phi(t)^\land R(t)
-$$
-其中$R(t)^TR(t)=I$，消去后得到
-$$
-\dot{R}(t)=\phi(t)^\land R(t)
-$$
-可以看成求导之后，左侧多出一个$\phi(t)^\land$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cdot%7BR%7D%28t%29R%28t%29%5ET%3D%5Cphi%28t%29%5E%5Cland%0A)
+
+两边右乘![](https://www.zhihu.com/equation?tex=R%28t%29)
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cdot%7BR%7D%28t%29R%28t%29%5ETR%28t%29%3D%5Cphi%28t%29%5E%5Cland%20R%28t%29%0A)
+
+其中![](https://www.zhihu.com/equation?tex=R%28t%29%5ETR%28t%29%3DI)，消去后得到
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cdot%7BR%7D%28t%29%3D%5Cphi%28t%29%5E%5Cland%20R%28t%29%0A)
+
+可以看成求导之后，左侧多出一个![](https://www.zhihu.com/equation?tex=%5Cphi%28t%29%5E%5Cland)
 
 # 相机模型
 
