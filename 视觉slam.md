@@ -185,7 +185,7 @@ u是运动传感器的读数，w是运动过程中加入的噪声，上面公式
 
 在机器人领域，一般使用右手系，机器人的运动也都是在右手系里面进行讨论
 
-![image-20230328135941278](/home/robot/文档/Notes/img/image-20230328135941278.png)
+![image-20230328135941278](./img/image-20230328135941278.png)
 
 如我们在激光坐标系下观测到某些情况，在相机坐标系下拍摄到某些情况
 
@@ -199,7 +199,7 @@ u是运动传感器的读数，w是运动过程中加入的噪声，上面公式
 
 定义外积（结果是一个与两个向量都垂直的向量）：
 
-![](https://www.zhihu.com/equation?tex=%0A%5Cbegin%7Balign%7D%0Aa%5Ctimes%20b%26%3D%0A%5Cleft%7C%0A%5Cbegin%7Bmatrix%7D%0A%5Cbold%7Bi%7D%26%5Cbold%7Bj%7D%26%5Cbold%7Bk%7D%5C%5C%0Aa_1%26a_2%26a_3%5C%5C%0Ab_1%26b_2%26b_3%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%7C%5C%5C%0A%26%3D%0A%28a_2b_3-a_3b_2%29%5Cbold%7Bi%7D%2B%28a_3b_1-a_1b_3%29%5Cbold%7Bj%7D%2B%28a_1b_2-a_2b_1%29%5Cbold%7Bk%7D%5C%5C%0A%0A%26%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Aa_2b_3-a_3b_2%5C%5C%0Aa_3b_1-a_1b_3%5C%5C%0Aa_1b_2-a_2b_1%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%5C%5C%0A%26%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0A0%26-a_3%26a_2%5C%5C%0Aa_3%260%26-a_1%5C%5C%0A-a_2%26a_1%260%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5Db%5C%5C%0A%26%5Ctriangleq%0Aa%5E%5Cland%20b%0A%5Cend%7Balign%7D%0A)
+![](https://www.zhihu.com/equation?tex=%0A%5Cbegin%7Balign%7D%0Aa%5Ctimes%20b%26%3D%0A%5Cleft%7C%0A%5Cbegin%7Bmatrix%7D%0A%5Cbold%7Bi%7D%26%5Cbold%7Bj%7D%26%5Cbold%7Bk%7D%5C%5C%0Aa_1%26a_2%26a_3%5C%5C%0Ab_1%26b_2%26b_3%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%7C%5C%5C%0A%26%3D%0A%28a_2b_3-a_3b_2%29%5Cbold%7Bi%7D%2B%28a_3b_1-a_1b_3%29%5Cbold%7Bj%7D%2B%28a_1b_2-a_2b_1%29%5Cbold%7Bk%7D%5C%5C%0A%0A%26%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Aa_2b_3-a_3b_2%5C%5C%0Aa_3b_1-a_1b_3%5C%5C%0Aa_1b_2-a_2b_1%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%5C%5C%0A%26%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0A0%26-a_3%26a_2%5C%5C%0Aa_3%260%26-a_1%5C%5C%0A-a_2%26a_1%260%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5Db%5C%5C%0A%26%5Ctriangleq%0%0Aa%5E%5Cland%20b%0A%5Cend%7Balign%7D%0A)
 
 
 ### 坐标变换
@@ -255,7 +255,7 @@ R是一个正交矩阵，行列式为+1
 即：
 
 
-![](https://www.zhihu.com/equation?tex=%0A%5Cbegin%7Bbmatrix%7D%0Aa%5E%5Cprime%20%5C%5C%0A1%0A%5Cend%7Bbmatrix%7D%0A%3D%5Cbegin%7Bbmatrix%7D%0AR%20%26t%20%5C%5C%0A0%5ET%20%261%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0Aa%5C%5C%0A1%0A%5Cend%7Bbmatrix%7D%0A%5Ctriangleq%0AT%0A%5Cbegin%7Bbmatrix%7D%0Aa%5C%5C%0A1%0A%5Cend%7Bbmatrix%7D%0A)
+![](https://www.zhihu.com/equation?tex=%0A%5Cbegin%7Bbmatrix%7D%0Aa%5E%5Cprime%20%5C%5C%0A1%0A%5Cend%7Bbmatrix%7D%0A%3D%5Cbegin%7Bbmatrix%7D%0AR%20%26t%20%5C%5C%0A0%5ET%20%261%0A%5Cend%7Bbmatrix%7D%0A%5Cbegin%7Bbmatrix%7D%0Aa%5C%5C%0A1%0A%5Cend%7Bbmatrix%7D%0A%5Ctriangleq%0%0AT%0A%5Cbegin%7Bbmatrix%7D%0Aa%5C%5C%0A1%0A%5Cend%7Bbmatrix%7D%0A)
 
 这样就简化了记忆和计算，多次变换可以直接进行乘法计算
 
@@ -411,8 +411,8 @@ R是一个正交矩阵，行列式为+1
 
 1. 封闭性：![](https://www.zhihu.com/equation?tex=%5Cforall%20a_1%2Ca_2%5Cin%20A%2Ca_1%5Ccdot%20a_2%20%5Cin%20A)
 2. 结合律：![](https://www.zhihu.com/equation?tex=%5Cforall%20a_1%2Ca_2%2Ca_3%5Cin%20A%2C%28a_1%5Ccdot%20a_2%29%5Ccdot%20a_3%3D%20a_1%5Ccdot%20%28a_2%5Ccdot%20a_3%29)
-3. 幺元：![](https://www.zhihu.com/equation?tex=%5Cexist%20a_0%5Cin%20A%2C%5Cforall%20a%20%5Cin%20A%2Ca_0%5Ccdot%20a%3Da%5Ccdot%20a_0%3Da)
-4. 逆：![](https://www.zhihu.com/equation?tex=%5Cforall%20a%5Cin%20A%2C%5Cexist%20a%5E%7B-1%7D%5Cin%20A%2Ca%5Ccdot%20a%5E%7B-1%7D%3Da_0)
+3. 幺元：![](https://www.zhihu.com/equation?tex=%5Cexists%20a_0%5Cin%20A%2C%5Cforall%20a%20%5Cin%20A%2Ca_0%5Ccdot%20a%3Da%5Ccdot%20a_0%3Da)
+4. 逆：![](https://www.zhihu.com/equation?tex=%5Cforall%20a%5Cin%20A%2C%5Cexists%20a%5E%7B-1%7D%5Cin%20A%2Ca%5Ccdot%20a%5E%7B-1%7D%3Da_0)
 
 三维旋转矩阵构成了特殊正交群![](https://www.zhihu.com/equation?tex=SO%283%29)（Special Orthogonal Group）
 
@@ -541,6 +541,12 @@ so(3) 的物理意义就是旋转向量，即so(3)的李代数空间就是由旋
 
 ![1717332083843](./assets/1717332083843.png)
 
+我们可以使用下图来可视化的理解李群和李代数的关系
+
+![CvLife_FAST-LIO_2023_14](./assets/CvLife_FAST-LIO_2023_14.png)
+
+![CvLife_FAST-LIO_2023_15](./assets/CvLife_FAST-LIO_2023_15.png)
+
 ## BCH公式
 
 在估计和优化过程中，求导数是非常必要的。但是李群元素只有乘法，无法定义导数(![](https://www.zhihu.com/equation?tex=R_1%2BR_2%5Cnotin%20SO%283%29%20))
@@ -600,6 +606,35 @@ so(3) 的物理意义就是旋转向量，即so(3)的李代数空间就是由旋
 4. 单位矩阵的李代数为0。
 5. 与导数模型相比，省去了一个雅可比的计算，更为实用。
 
+## Sophus库
+
+Sophus库是一个专门处理李群和李代数的C++库
+
+编译安装完成之后，在CMakeLists中，可以使用如下命令导入Sophus库
+
+```cmake
+find_package(Sophus REQUIRED)
+```
+
+然后就可以在CPP中使用此库了，下面是一段代码
+
+```c++
+#include <Eigen/Core>
+#include"sophus/so3.h"
+#include"sophus/se3.h"
+//导入库，Eigen和Sophus
+Eigen::Matrix3d R=Eigen::AngleAxisd(M_PI/4,Eigen::Vector3d(0.1.0)).toRotationMatrix();//沿Y轴转45度的旋转矩阵
+
+//Sophus的构造方式
+Sophus::SO3 rot_r(R);//从旋转矩阵构造
+Sophus::SO3 SO3_v(0,M_PI/4,0);// 从旋转向量构造
+Eigen::Quaterniond q(R);//从四元数构造
+Sophus::SO3 SO3_q(q);
+//当使用cout输出的时候，就会以李代数形式输出，或者可以使用.matrix()方法输出矩阵
+```
+
+
+
 # 相机模型
 
 观测，也就是机器人如何观测外部世界，如果使用激光雷达观测或者使用相机观测，也就构成了激光slam或者视觉slam
@@ -610,7 +645,260 @@ so(3) 的物理意义就是旋转向量，即so(3)的李代数空间就是由旋
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/c38ce619f95f46fab35153cdc8d3d53b.jpeg#pic_center)
 
+# IMU模型
+
+## 概述
+
+IMU也就是惯性测量单元，是测量物体三轴姿态角（或角速率）以及加速度的装置
+
+- 6轴：三轴加速度计+三轴陀螺仪（角速度传感器）
+- 9轴：6轴+三轴磁力计（角度）
+
+那么为什么用IMU呢？主要有以下几个原因
+
+- 输出加速度角速度
+- 频率高（100-400HZ），相机和雷达的频率基本上只有几十赫兹
+- 不受外界干扰（磁力计可能受干扰），相机容易受到光照干扰
+- 价格不贵，基本上几十几百就可以买到（几万的也有）
+
+## 测量原理
+
+实际上分为三种测量，加速度计、陀螺仪和磁力计 
+
+![CvLife_FAST-LIO_2023_22](./assets/CvLife_FAST-LIO_2023_22.png)
+
+加速度计实际上就是运用了胡克定律，也就是在弹簧固定下的质量块在有加速度的情况下会有位移，根据牛顿定律就可以知道加速度大小，当然在IMU中是使用电容计算位移的
+
+磁力计的工作原理跟指南针类似
+
+## 误差模型
+
+IMU的误差可以分为确定误差（可以通过标定获取）和随机误差
+
+![CvLife_FAST-LIO_2023_23](./assets/CvLife_FAST-LIO_2023_23.png)
+
+其中，偏置是会随着时间而变化的，所以还要在过程中不断标定或者说估计，很多紧耦合的框架都会在过程中不断估计
+
+## 测量模型
+
+世界坐标系为 G，IMU坐标系为 I
+
+![CvLife_FAST-LIO_2023_24](./assets/CvLife_FAST-LIO_2023_24.png)
+
+一般认为重力加速度不变，导数为零，偏置服从随机游走模型，其导数是高斯的
+
+所以，在世界坐标系下的速度等状态量如下
+$$
+^G\dot{p}_I=^Gv_I,^G\dot{v}_I=^{G}R_Ia_m
+$$
+
+
+## 运动模型（连续+离散）
+
+基于连续的数学运动模型考虑
+
+![CvLife_FAST-LIO_2023_25](./assets/CvLife_FAST-LIO_2023_25.png)
+
+但是，机器无法处理连续数值，所以只能进行离散化才可以进一步处理，也就是进行欧拉积分，当然实际上也可以使用两帧之间的平均值计算（也就是中值积分）
+
+![CvLife_FAST-LIO_2023_26](./assets/CvLife_FAST-LIO_2023_26.png)
+
+这里因为时间间隔很小，所以在实际代码中可以忽略二次项
+
+然后把测量模型的数值带入离散模型，就可以得到如下的计算模型，然后循环执行计算即可，进而不断更新状态量
+
+![CvLife_FAST-LIO_2023_27](./assets/CvLife_FAST-LIO_2023_27.png)
+
+## 激光雷达模型
+
+目前的激光雷达基本上是光学雷达，通过发射脉冲激光，基于飞行时间法测量距离（也有部分初级雷达使用三角测距法），并且多线雷达还会同时发射多组激光来感知环境
+
+激光雷达主要是以下三种，其中机械式激光雷达较为常见，受限于机械式结构，寿命相对较短，难以实现车规级运用
+
+目前相对好的是混合固态的，相对机械式寿命相对更长，其中有大疆的Livox系列
+
+![CvLife_FAST-LIO_2023_29](./assets/CvLife_FAST-LIO_2023_29.png)
+
+# 点云处理
+
+## 点云运动畸变矫正
+
+因为雷达与机器人是刚性连接，并且是不断进行采样而非一次性完成采样的，所以会发生一个情况，点云中的点不是同一时间完成采集的，并且在这个过程中机器人是在运动的，所以同一个物体会造成多个位置不同的采样点，如下图所示，五角星表示物体采样的点，在一段时间的起止时刻，因为机器人的位置或者说坐标系发生了变化，所以测量出来的位置就会不一样，或者说产生了错位，因为在起始时刻和结束时刻的点云是在两个不同的坐标系下采样的，但是统一在结束时刻的坐标系下进行处理，也就是产生了运动畸变
+
+![3DCVer_LOAM_L2_10](./assets/3DCVer_LOAM_L2_10.png)
+
+那么如何进行矫正呢，实际上就是把所有的点归到同一个坐标系下，然后把误差补偿掉
+
+具体步骤如下图所示，根据从里程计（比如说IMU或者轮速里程计）处获得的位姿信息，计算出来结束时刻相对起始时刻的位姿变化，然后插值计算出来每一次点云扫描时刻的位姿，基于这个插值出来的位姿变化矫正点云坐标，使其统一转化到起始时刻的坐标下或者结束时刻的坐标下
+
+![3DCVer_LOAM_L2_13](./assets/3DCVer_LOAM_L2_13.png)
+
+## 解决畸变工程技巧
+
+工程上的一些技巧
+
+- 激光雷达安装方式，通常y轴朝向载体左右两侧
+- 相对位姿变换可以通过GPS或者IMU或者轮式里程计获取
+
+## 点云下采样
+
+因为直接从激光雷达获取的点云中含有大量的点，所以需要进行下采样减少点的数量，其中体素滤波方法较为常见，但是要注意体素大小，太大的话会造成点云细节缺失
+
+![CvLife_FAST-LIO_2023_30](./assets/CvLife_FAST-LIO_2023_30.png)
+
+## 特征点提取
+
+特征点提取方法中的角点和面点提取的方法来源于LOAM论文，这是激光SLAM的开篇之作，实际上这种特征点是根据曲率来判断并且提取的
+
+![CvLife_FAST-LIO_2023_31](./assets/CvLife_FAST-LIO_2023_31.png)
+
+具体的提取方法是这样的，对于同一个scan（也就是同一个射线上的点），判断其曲率，曲率公式如上所示，选取一个近邻点集进行曲率计算，然后根据阈值判断是否为角点或者面点，上图右下角的图片中，绿色圆形就是面点，橙色三角就是角点
+
+区分角点和面点的原因是，在计算残差的时候，两种特征点的计算方式不一样
+
+## 残差
+
+两种点的残差计算方式如下，而我们要做的事情就是通过优化位姿，使得残差接近零
+
+![CvLife_FAST-LIO_2023_32](./assets/CvLife_FAST-LIO_2023_32.png)
+
+其中角点的残差计算方式如图，其中 $\widetilde{X}^L_{(k,i)}$ 表示第 $k$ 帧的第 $i$ 个点的坐标（波浪线表示已经乘以待优化位姿的坐标，也就是转到世界坐标系下的坐标），然后我们计算此点到近邻直线的距离
+
+# SLAM前端
+
+激光里程计实际上就是一种点云配准的方法，通过两帧点云之间的相对位姿变换来计算里程计，而想实现两帧点云的相对位姿变换求解，就要进行点云配准，其中经典方法有ICP和NDT，两种方法都可以在一些点云库中调用现成接口实现
+
+## ICP方法
+
+这是一种经典方法，思想是两帧点云中距离最近的点是近邻点，下图中 $p_i$ 和 $q_i$ 是两帧点云，$u_p$ 和 $u_q$ 是两帧点云的求和
+
+![3DCVer_LOAM_L2_16](./assets/3DCVer_LOAM_L2_16.png)
+
+然后先后分布求解 $R$ 和 $T$
+
+![3DCVer_LOAM_L2_17](./assets/3DCVer_LOAM_L2_17.png)
+
+## NDT方法
+
+NDT方法也就是正态分布变换方法，是另一种经典的方法，思想是，两帧点云的分布要尽可能接近，具体操作是对上一帧点云计算分布，然后下一帧点云要尽可能接近这个分布，对应的姿态就是要寻找的姿态或者说最准确的姿态
+
+![3DCVer_LOAM_L2_18](./assets/3DCVer_LOAM_L2_18.png)
+
+如上图所示，对上一帧点云 $y$ 进行均值和协方差矩阵计算，得到了高斯形式的概率密度函数，然后使得概率乘积尽可能更大，然后使用极大似然估计方法进行求解
+
+![](./assets/3DCVer_LOAM_L2_19.png)
+
+作者提出的一种改进如上图左侧所示，原来的概率分布（红线）可能会出现概率为0或者无穷大的情况，所以要做一点改动，如上图左下角公式所示，可以避免异常情况，变成绿线所示
+
+![3DCVer_LOAM_L2_21](./assets/3DCVer_LOAM_L2_21.png)
+
+这里，NDT更不容易受到噪声干扰，因为点云中的点是存在噪声的，在ICP中噪声也会参与计算，造成干扰，导致优化陷入局部最优，此外NDT是点云的概率分布函数进行计算，所以计算上更快
+
+## 特征点配准方法
+
+这是一种优化的配准方法，选取点云中一些特殊的点来进行配准，在减少了点云数量的同时，基于特征点配准也会降低噪声的干扰，在LOAM中使用的特征点是角点和面点，也就是曲率满足一定条件的点
+
+![3DCVer_LOAM_L2_22](./assets/3DCVer_LOAM_L2_22.png)
+
+LOAM的代码是这样操作的，代码如下
+
+```c++
+for(size_t i = startIdx，regionIdx = 0; i <= endIdx;i++，regionIdx++){
+    //遍历点云，求取第 i 个点的曲率，pointWeight是权重，这里是-10，要与采样点数量对应或者说为相反数，便于后面的计算
+    float diffX = pointWeight * _laserCloud[i].x;
+    float diffY = pointWeight * _laserCloud[i].y;
+    float diffZ = pointWeight * _laserCloud[i].z;
+    
+    //_config.curvatureRegion是求曲率范围，这里是5，也就是选取半径为5，选择临近的10个点求曲率
+	for(int j = 1;j <= _config.curvatureRegion; j++){
+        //实际上就是计算差值，因为diffX等是负值，并且已经乘以权重了，遍历求和等于计算所有邻近点与此点的差值并且求和，相当于计算所有近邻点相对此点的偏移量之和
+        diffX += _laserCloud[i + j].x + _laserCloud[i - j].x;
+        diffY += _lasercloud[i + j].y + _laserCloud[i - j].y;
+        diffZ += _lasercloud[i + j].z + _laserCloud[i - j].z;
+    }
+    _regionCurvature[regionIdx] = diffx* diffx + diffy * diffy + diffz * diffz;
+    //对三维上的偏移量求平方和，以此来判断曲率是否过大或者过小
+    _regionSortIndices[regionIdx]= i;
+}
+```
+
+
+
+## PL-ICP方法
+
+除去点到点的配准方法，还有一种是点到线的配准方法，也就是PL-ICP方法，也即Point-Line ICP，其精度相对点到点方法更高，这也是LOAM采用的配准方法
+
+![3DCVer_LOAM_L2_23](./assets/3DCVer_LOAM_L2_23.png)
+
+
+
+# 激光SLAM框架
+
+## LOAM框架
+
+LOAM框架是14年提出的三维激光框架，非常经典，后面的很多方法都是基于此框架优化的，其系统架构如下，前端就是激光配准和点云里程计，里程计输出会有一个漂移，所以后面跟着一个Mapping的环节来优化这种情况，并且LOAM没有回环检测功能
+
+在里程计部分，通过提取特征点，加上优化点到线的距离和点到平面的距离并且采用L-M方法求最优解，得到两帧点云之间的位姿关系
+
+![3DCVer_LOAM_L3_3](./assets/3DCVer_LOAM_L3_3.png)
+
+在后面的地图部分，还会进行一次地图匹配，重新计算一次位姿变换，并且对两次的数据进行融合
+
+![ ](./assets/3DCVer_LOAM_L3_5.png)
+
+### 特征点提取
+
+在LOAM的代码中，特征点提取部分考虑了特征点的均匀性，按照角度把点云分为了四个部分或者说四个扇形，每个扇形里面提取出固定数量的角点和面点
+
+同时，对于一些特殊情况（如存在遮挡等情况的点云，也就是坏点）进行了剔除操作
+
+### 点云配准
+
+为了找到特征点的对应关系，要进行一次运动畸变矫正，然后才可以更为准确的进行运动畸变矫正
+
+![3DCVer_LOAM_L3_8](./assets/3DCVer_LOAM_L3_8.png)
+
+## LEGO-LOAM
+
+这是IROS2018的文章，基于LOAM进行了改进，并且一个很大的改进就是加入了回环检测功能
+
+![3DCVer_LOAM_L3_6](./assets/3DCVer_LOAM_L3_6.png)
+
+## FAST-LIO框架
+
+FAST-LIO的主体框架如下，输入部分是雷达和IMU，雷达的输入是100k-500kHz，实际上因为这是固态雷达，一个点就相当于一个采样，所以是一秒有100k-500k的点云输入，当然一个点是无法进行SLAM的，所以会积累几十或者上百k个单位的点之后才会作为一次输入送入SLAM（一般取决于里程计频率，比如说里程计频率为50Hz时，则在20ms内积累点云，成为一帧点云并处理一次，这20ms内的点云为一次scan），然后进行特征提取（方法与LOAM一致）；而IMU的输入会送入前向传播模块（这里传播的是状态量，也就是待估计的位移、偏置等），前向传播的目的有
+
+- 在两帧雷达数据之间有很多帧IMU数据，将这些IMU数据进行积分，得到位姿变化的估计
+- 传递误差量，尤其是传递误差量的协方差矩阵（在后面迭代更新的时候会用到）
+
+然后就是反向传播和运动补偿，因为进行了前向传播，所以每一帧的IMU都有一个预估的位姿，通过这个位姿对激光雷达点云数据进行运动补偿，降低运动产生的失真
+
+然后将补偿后的点云和预估的状态量进行一个残差的计算，然后通过误差状态卡尔曼滤波器进行迭代更新，如果收敛的话就进行一个里程计输出，否则继续进行迭代
+
+收敛并且输出里程计之后，就会根据里程计信息或者说位姿信息，把新的点云插入到全局地图中去，当然也会在全局地图中根据位姿信息进行一个下采样，得到一个子地图，根据这个子地图去寻找近邻点进行匹配
+
+![FAST-LIO_2](./assets/FAST-LIO_2.png)
+
+在一次scan的过程中，记录起止时间为 $t_{k-1}$ 和 $t_k$，后者为当前时刻，可以认为点云特征是在时间轴上均匀分布并且首尾对齐的，但是IMU的数据
+
+### IMU离散模型
+
+在模型中，当时间间隔为 $\Delta t$ 的时候，设状态量为 $x$，则离散模型可以表示为
+$$
+x_{i+1}=x_i \boxplus (\Delta tf(x_i,u_i,w_i))\\
+x = [^GR^T_I,^Gp^T_I,^Gv^T_I,b^T_w,b^T_a,^Gg^T]^T \in \mathcal{M}\\
+u = [w^T_m,a^T_m]^T\\
+w = [n^T_w,n^T_a,n^T_{bw},n^T_{ba}]
+$$
+其中 $i$ 是IMU测量的序号或者说索引，$x$ 是状态量，即为所有的待估计变量，共18维。可以看出我们要实时估计的是一个18维的量，它包含位置，姿态，速度以及IMU的参数。因此它是一个紧耦合的框架。
+
+输入是 $u$ （也即加速度测量值）,$w$ 为所有的噪声量，包含测量噪声（前两项）和bias随机游走噪声（后两项）
+
 # 非线性优化
+
+在SLAM中，经常性会碰到各种优化问题，比如说给一个目标函数，求出使其最小化的解，并且这个目标函数往往是非线性的
+
+当然，目前很多库，比如说Ceres、g2o还有gtsan等库都可以实现非线性优化具体求解操作，我们只需要把待求解函数输入即可
 
 ## 概述
 

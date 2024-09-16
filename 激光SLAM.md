@@ -10,7 +10,9 @@
 - 全驱动系统（在![](https://www.zhihu.com/equation?tex=xy%5Ctheta)三个方向上的运动是可以完全解耦的，可以分别进行分析，更容易分析）
 - 可以进行运动学分解
 以车辆中心为原点，以一个轮子的方向为X正方向建立坐标系
+
 ### 运动分解——平移X
+
 - 我们设![](https://www.zhihu.com/equation?tex=v_x%5Cneq%200%2CV_y%3D%5Comega%3D0)
 - ![](https://www.zhihu.com/equation?tex=V_1%3D0%2AV_x)
 - ![](https://www.zhihu.com/equation?tex=V_2%3D-sin%7B60%7D%2AV_x)
@@ -59,6 +61,7 @@
 
 - 我们假设一个机器人底盘到世界坐标系的变换
   
+
 ![](https://www.zhihu.com/equation?tex=%0A%20%20T_%7BV2W%7D%3D%5Cleft%5B%0A%20%20%5Cbegin%7Bmatrix%7D%0A%20%20cos%5Ctheta%26-sin%5Ctheta%20%26x%5C%5C%0A%20%20sin%5Ctheta%20%26%20cos%5Ctheta%20%260%5C%5C%0A%20%200%260%261%0A%20%20%5Cend%7Bmatrix%7D%0A%20%20%5Cright%5D%0A%20%20)
 
 
@@ -70,12 +73,12 @@
 
 ## 线性最小二乘法的基本原理
 
-可以不关心底层的具体细节直接使用，但是最好基于自己的模型进行修改
+可以不关心底层的具体细节直接使用，但是最好基于自己的模型进行修改，这样效果更好，因为通用的标定方法在特定情况下的效果未必很好
 
 线性方程组![](https://www.zhihu.com/equation?tex=Ax%3Db)（工程里面最常见的情况）
 
 - ![](https://www.zhihu.com/equation?tex=A)为![](https://www.zhihu.com/equation?tex=m%5Ctimes%20n)的矩阵
-- ![](https://www.zhihu.com/equation?tex=x)为![](https://www.zhihu.com/equation?tex=n%5Ctimes%201)的向量是我们要求解的状态量，可以是：机器人的位姿，机器人特征点的位置
+- ![](https://www.zhihu.com/equation?tex=x)为![](https://www.zhihu.com/equation?tex=n%5Ctimes%201)的向量，是我们要求解的状态量，可以是：机器人的位姿，机器人特征点的位置
 - 每一行表示一个约束，每一列表示一个自由度或者说未知数的维数
 - 当![](https://www.zhihu.com/equation?tex=m%3Dn)的时候，约束正好，称为适定方程组，有唯一解（A可以有广义逆，所以必定有解）
 - 当![](https://www.zhihu.com/equation?tex=m%3Cn)时，约束不足，称为欠定方程组，方程组有无穷多解
@@ -85,8 +88,7 @@
 ### 最小二乘解
 
 - 绝大多数情况都是![](https://www.zhihu.com/equation?tex=m%3En)，是超定方程组
-- 无解，但是我们可以寻找最接近真实解的解
-- 无解但是有最小二乘解
+- 无解，但是我们可以寻找最接近真实解的解，也就是有最小二乘解
 - 通解：![](https://www.zhihu.com/equation?tex=x%5E%2A%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb)
 - 注意，在这里![](https://www.zhihu.com/equation?tex=Ax%3Db)是一个病态的方程，这是因为给![](https://www.zhihu.com/equation?tex=b)加一点微小的扰动，就会造成方程组解的巨大变化，所以在实际工程里面，我们会对![](https://www.zhihu.com/equation?tex=A%5ETA)进行一个QR分解来让解更稳定
 
@@ -102,10 +104,11 @@
 
 - 显然![](https://www.zhihu.com/equation?tex=%28b-Ax%5E%2A%29)与矩阵![](https://www.zhihu.com/equation?tex=A)的每一个列向量都垂直，那么显然有
   
+
 ![](https://www.zhihu.com/equation?tex=%0A%20%20a_1%5ET%28b-Ax%5E%2A%29%3D0%5C%5C%0A%20%20a_2%5ET%28b-Ax%5E%2A%29%3D0%5C%5C%0A%20%20%5Ccdots%20%5C%5C%0A%20%20a_n%5ET%28b-Ax%5E%2A%29%3D0%0A%20%20)
 
   即有
-  
+
 ![](https://www.zhihu.com/equation?tex=%0A%20%20A%5ET%28b-Ax%5E%2A%29%3D0%5C%5C%0A%20%20A%5ETb%3DA%5ETAx%5E%2A%5C%5C%0A%20%20x%5E%2A%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb%0A%20%20)
 
   
@@ -164,6 +167,7 @@
 
   其中：因为我们是在二维平面上进行标定，所以![](https://www.zhihu.com/equation?tex=u_i)这些都是三维向量，![](https://www.zhihu.com/equation?tex=u_i%3D%28u_%7Bix%7D%2Cu_%7Biy%7D%2Cu_%7Bi%5Ctheta%7D%29)
   
+
 ![](https://www.zhihu.com/equation?tex=%0A%20%20X%3D%0A%20%20%5Cleft%5B%0A%20%20%5Cbegin%7Bmatrix%7D%0A%20%20x_%7B11%7D%26x_%7B12%7D%26x_%7B13%7D%5C%5C%0A%20%20x_%7B21%7D%26x_%7B22%7D%26x_%7B23%7D%5C%5C%0A%20%20x_%7B31%7D%26x_%7B32%7D%26x_%7B33%7D%5C%5C%0A%20%20%5Cend%7Bmatrix%7D%0A%20%20%5Cright%5D%0A%20%20)
 
   
@@ -173,6 +177,8 @@
 对于每一组数据，可得
 
 ![](https://www.zhihu.com/equation?tex=%0Au_%7Bix%7D%2Ax_%7B11%7D%2Bu_%7Biy%7D%2Ax_%7B12%7D%2Bu_%7Bi%5Ctheta%7D%2Ax_%7B13%7D%3Du_%7Bix%7D%5E%2A%5C%5C%0Au_%7Bix%7D%2Ax_%7B21%7D%2Bu_%7Biy%7D%2Ax_%7B22%7D%2Bu_%7Bi%5Ctheta%7D%2Ax_%7B23%7D%3Du_%7Biy%7D%5E%2A%5C%5C%0Au_%7Bix%7D%2Ax_%7B31%7D%2Bu_%7Biy%7D%2Ax_%7B32%7D%2Bu_%7Bi%5Ctheta%7D%2Ax_%7B33%7D%3Du_%7Bi%5Ctheta%7D%5E%2A%5C%5C%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Au_%7Bix%7D%26u_%7Biy%7D%26u_%7Bi%5Ctheta%7D%260%260%260%260%260%260%5C%5C%0A0%260%260%26u_%7Bix%7D%26u_%7Biy%7D%26u_%7Bi%5Ctheta%7D%260%260%260%5C%5C%0A0%260%260%260%260%260%26u_%7Bix%7D%26u_%7Biy%7D%26u_%7Bi%5Ctheta%7D%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Ax_%7B11%7D%5C%5C%0A%5Cvdots%5C%5C%0Ax_%7B33%7D%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Au_%7Bix%7D%5E%2A%5C%5C%0Au_%7Biy%7D%5E%2A%5C%5C%0Au_%7Bi%5Ctheta%7D%5E%2A%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%5C%5C%0AA%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0AA_1%5C%5C%0A%5Cvdots%5C%5C%0AA_n%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Chspace%7B3em%7D%0Ab%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Ab_1%5C%5C%0A%5Cvdots%5C%5C%0Ab_n%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%0A%5Chspace%7B3em%7D%0A%5Cvec%7BX%7D%3D%28A%5ETA%29%5E%7B-1%7DA%5ETb%0A)
+
+如果想使用直接线性方法实现里程计标定，可以进行如下计算，首先有两个里程计位姿，$O_i$ 和 $O_j$，因为里程计的位姿是积分计算出来的，所以不可能有一个增量，所以要求出 i 坐标系在 j 坐标系中的位姿，也叫 $D_{pose}$，这个可以使用 PL-ICP 方法计算
 
 
 # 激光雷达运动畸变去除
@@ -233,3 +239,15 @@
 ### 纯估计方法
 
 ### 里程计辅助方法
+
+# FAST-LIO2框架
+
+为什么要学习FAST-LIO2呢
+
+![CvLife_FAST-LIO_2023_1](./assets/CvLife_FAST-LIO_2023_1.png)
+
+总的来说有以下几个好处
+
+- 性能优越，可以说是目前最先进的LIO框架之一
+- 知识全面，涵盖了大部分多传感器融合所需要的知识，有助于理解其他的多传感器融合框架
+- 代码可读性较好，适合初学者上手
