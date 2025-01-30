@@ -191,13 +191,9 @@ u是运动传感器的读数，w是运动过程中加入的噪声，上面公式
 
 ### 向量运算
 
-对于向量![](https://www.zhihu.com/equation?tex=a%2Cb)
+对于向量![](https://www.zhihu.com/equation?tex=a%2Cb) 可以定义内积（也就是点乘)
 
-定义内积（也就是点乘）：
-
-![](https://www.zhihu.com/equation?tex=%0Aa%20%5Ccdot%20b%3Da%5ETb%3D%5Csum%5Climits%5E3_%7Bi%3D1%7Da_ib_i%3D%5Cvert%20a%20%5Cvert%20%5Cvert%20b%5Cvert%20%5Ccos%20%3Ca%2Cb%3E%0A)
-
-定义外积（结果是一个与两个向量都垂直的向量）：
+然后定义外积（结果是一个与两个向量都垂直的向量，外积向量长度就是两向量为临边的平行四边形面积）：
 
 ![](https://www.zhihu.com/equation?tex=%0A%5Cbegin%7Balign%7D%0Aa%5Ctimes%20b%26%3D%0A%5Cleft%7C%0A%5Cbegin%7Bmatrix%7D%0A%5Cbold%7Bi%7D%26%5Cbold%7Bj%7D%26%5Cbold%7Bk%7D%5C%5C%0Aa_1%26a_2%26a_3%5C%5C%0Ab_1%26b_2%26b_3%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%7C%5C%5C%0A%26%3D%0A%28a_2b_3-a_3b_2%29%5Cbold%7Bi%7D%2B%28a_3b_1-a_1b_3%29%5Cbold%7Bj%7D%2B%28a_1b_2-a_2b_1%29%5Cbold%7Bk%7D%5C%5C%0A%0A%26%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0Aa_2b_3-a_3b_2%5C%5C%0Aa_3b_1-a_1b_3%5C%5C%0Aa_1b_2-a_2b_1%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5D%5C%5C%0A%26%3D%0A%5Cleft%5B%0A%5Cbegin%7Bmatrix%7D%0A0%26-a_3%26a_2%5C%5C%0Aa_3%260%26-a_1%5C%5C%0A-a_2%26a_1%260%5C%5C%0A%5Cend%7Bmatrix%7D%0A%5Cright%5Db%5C%5C%0A%26%5Ctriangleq%0%0Aa%5E%5Cland%20b%0A%5Cend%7Balign%7D%0A)
 
@@ -236,17 +232,37 @@ R是一个正交矩阵，行列式为+1
 
 旋转矩阵的左乘和右乘在数学和物理上有不同的意义，主要体现在旋转的顺序和方向上。
 
-左乘旋转矩阵：这种表示方式通常用于主动旋转（active rotation），具有多重物理意义
+实际上，旋转矩阵有两种物理意义
 
-1. 坐标系的旋转，其应用场景有SLAM，机械臂运动学等
+1. 坐标系的旋转，其应用场景有SLAM，机械臂运动学等，也就是其中的点本质上是没有移动的，只是坐标系发生了改变，导致点在两个坐标系下有了不同的位姿表示
 
-即旋转向量本身。这意味着我们将向量 ![](https://www.zhihu.com/equation?tex=v) 看作是固定在一个坐标系中，然后对这个向量应用旋转矩阵 ![](https://www.zhihu.com/equation?tex=R) 来得到旋转后的向量 ![](https://www.zhihu.com/equation?tex=v%5E%5Cprime)。
+   ![](https://pic3.zhimg.com/v2-aa06a0cd65ed3438c4a81417b56c0c0e_1440w.jpg)
 
-例如，如果 ![](https://www.zhihu.com/equation?tex=R) 是一个绕 z 轴旋转的矩阵，左乘表示向量 ![](https://www.zhihu.com/equation?tex=v) 围绕 z 轴旋转。
+   其中有：$P=R_z(\alpha)P^\prime$
 
-右乘旋转矩阵：这种表示方式通常用于被动旋转（passive rotation），即旋转坐标系而不是向量。这意味着我们将向量 ![](https://www.zhihu.com/equation?tex=v) 看作是固定的，然后对坐标系应用旋转矩阵 ![](https://www.zhihu.com/equation?tex=R) 来得到旋转后的向量 ![](https://www.zhihu.com/equation?tex=v%5E%5Cprime) （可以理解为在新坐标系下的坐标）。右乘通常用于描述坐标系的旋转，而不是旋转向量本身。
+2. 向量的旋转，其应用场景有机器人的姿态估计等，在这个情况下，点本身是发生了移动的，点围绕一个坐标系原点进行旋转
 
-例如，如果 ![](https://www.zhihu.com/equation?tex=R) 是一个绕 z 轴旋转的矩阵，右乘表示坐标系围绕 z 轴旋转。
+   ![](https://pic3.zhimg.com/v2-b6cc20098234793618dd553bb7e3621e_1440w.jpg)
+
+   其中有：$P=R_z(\alpha)P^\prime$
+
+实际上，上面两种物理意义下，矩阵乘法是一致的，也就是在这种矩阵乘法下，两种物理意义不冲突
+
+那么旋转矩阵的左乘和右乘有什么区别呢
+
+1. 左乘旋转矩阵：这种表示方式通常用于描述绕固定坐标系进行旋转，或者说是主动旋转（active rotation），旋转矩阵可以连续左乘
+
+   左乘即旋转向量本身。这意味着我们将向量 ![](https://www.zhihu.com/equation?tex=v) 看作是固定在一个坐标系中，然后对这个向量应用旋转矩阵 ![](https://www.zhihu.com/equation?tex=R) 来得到旋转后的向量 ![](https://www.zhihu.com/equation?tex=v%5E%5Cprime)。
+
+   例如，如果 ![](https://www.zhihu.com/equation?tex=R) 是一个绕 z 轴旋转的矩阵，左乘表示向量 ![](https://www.zhihu.com/equation?tex=v) 围绕 z 轴旋转。
+
+2. 右乘旋转矩阵：这种表示方式通常用于绕动态的坐标系旋转，也就是以前一时刻的位置为旋转中心进行旋转，是被动旋转（passive rotation），即旋转坐标系而不是向量
+
+   这意味着我们将向量 ![](https://www.zhihu.com/equation?tex=v) 看作是固定的，然后对坐标系应用旋转矩阵 ![](https://www.zhihu.com/equation?tex=R) 来得到旋转后的向量 ![](https://www.zhihu.com/equation?tex=v%5E%5Cprime) （可以理解为在新坐标系下的坐标)。右乘通常用于描述坐标系的旋转，而不是旋转向量本身。
+
+   例如，如果 ![](https://www.zhihu.com/equation?tex=R) 是一个绕 z 轴旋转的矩阵，右乘表示坐标系围绕 z 轴旋转。
+
+以自动驾驶场景为例，有车身的自车坐标系和全局的地面坐标系
 
 ### 齐次坐标
 
@@ -387,8 +403,6 @@ R是一个正交矩阵，行列式为+1
 
 ![](https://www.zhihu.com/equation?tex=%0A%0A)
 
-
-
 但是我们可以发现，旋转矩阵是无法相加的，相加之后就不是一个旋转矩阵了，所以我们需要用一种新理论去完成这个操作。
 
 ### 问题
@@ -414,6 +428,8 @@ R是一个正交矩阵，行列式为+1
 3. 幺元：![](https://www.zhihu.com/equation?tex=%5Cexists%20a_0%5Cin%20A%2C%5Cforall%20a%20%5Cin%20A%2Ca_0%5Ccdot%20a%3Da%5Ccdot%20a_0%3Da)
 4. 逆：![](https://www.zhihu.com/equation?tex=%5Cforall%20a%5Cin%20A%2C%5Cexists%20a%5E%7B-1%7D%5Cin%20A%2Ca%5Ccdot%20a%5E%7B-1%7D%3Da_0)
 
+实际上旋转矩阵和变换矩阵就可以构成群，因为满足旋转矩阵和变换矩阵要求的所有矩阵就是一个集合，乘法就是所定义的运算
+
 三维旋转矩阵构成了特殊正交群![](https://www.zhihu.com/equation?tex=SO%283%29)（Special Orthogonal Group）
 
 三维变换矩阵的集合称为特殊欧式群![](https://www.zhihu.com/equation?tex=SE%283%29)（Special Euclidean Group)
@@ -424,7 +440,7 @@ R是一个正交矩阵，行列式为+1
 
 李群是具有连续性质的群，或者说这个群是光滑的，所以既是群也是流形
 
-直观上看，一个刚体能够连续地在空间中运动，故![](https://www.zhihu.com/equation?tex=SO%283%29)和![](https://www.zhihu.com/equation?tex=SE%283%29)都是李群。
+直观上看，一个刚体能够连续地在空间中运动，也就是有连续的位姿，相应的旋转矩阵和变换矩阵也是连续的，故![](https://www.zhihu.com/equation?tex=SO%283%29)和![](https://www.zhihu.com/equation?tex=SE%283%29)都是李群。
 
 但是，![](https://www.zhihu.com/equation?tex=SO%283%29)和![](https://www.zhihu.com/equation?tex=SE%283%29)只有定义良好的乘法，没有加法，所以难以进行取极限、求导等操作。
 
@@ -432,9 +448,7 @@ R是一个正交矩阵，行列式为+1
 
 李代数是与李群对应的一种结构，位于向量空间，对应李群的正切空间，描述了李群局部的导数，记作 ![](https://www.zhihu.com/equation?tex=so%283%29) 和 ![](https://www.zhihu.com/equation?tex=se%283%29)
 
-从旋转矩阵引出李代数
-
-我们考虑任意旋转矩阵![](https://www.zhihu.com/equation?tex=R)，满足![](https://www.zhihu.com/equation?tex=RR%5ET%3DI)
+从旋转矩阵可以引出李代数，我们考虑任意旋转矩阵![](https://www.zhihu.com/equation?tex=R)，满足![](https://www.zhihu.com/equation?tex=RR%5ET%3DI)
 
 在连续运动过程中，显然![](https://www.zhihu.com/equation?tex=R)是连续时间的函数，我们记为![](https://www.zhihu.com/equation?tex=R%28t%29R%28t%29%5ET%3DI)
 
@@ -494,7 +508,7 @@ R是一个正交矩阵，行列式为+1
 
 4. 雅可比等价： ![](https://www.zhihu.com/equation?tex=%5Cforall%20X%2CY%2CZ%5Cin%20%5Cmathbb%20V%2C%5BX%2C%5BY%2CZ%5D%5D%2B%5BZ%2C%5BY%2CX%5D%5D%2B%5BY%2C%5BZ%2CX%5D%5D%3D0)
 
-二元运算被称为李括号，例子:三维空间向量+ R3 +叉积运算构成李代数
+二元运算被称为李括号，例子:三维空间向量+ R3 +叉积运算构成李代数，当然，实际上我们不需要去记忆这些性质
 
 对于李群 SO(3)，有李代数 so(3)
 
@@ -606,6 +620,10 @@ so(3) 的物理意义就是旋转向量，即so(3)的李代数空间就是由旋
 4. 单位矩阵的李代数为0。
 5. 与导数模型相比，省去了一个雅可比的计算，更为实用。
 
+## 应用
+
+因为李代数是线性的，而李群则是非线性的，而二者之间还有一一对应的关系，所以我们可以使用李代数来进行插值等操作，比如说两个时刻我们获取了两个位姿或者说变换矩阵，那么如何求得两个时刻之间任意时刻的位姿呢？这里就可以基于前一时刻，以前一时刻的位置为原点，计算后一时刻相对的位姿变换矩阵，然后将此矩阵变为李代数，在得到线性的李代数之后，就可以计算出中间任意时刻的对应的李代数，进而求得中间任意时刻的李群也即位姿
+
 ## Sophus库
 
 Sophus库是一个专门处理李群和李代数的C++库
@@ -656,10 +674,10 @@ IMU也就是惯性测量单元，是测量物体三轴姿态角（或角速率�
 
 那么为什么用IMU呢？主要有以下几个原因
 
-- 输出加速度角速度
+- 直接输出加速度角速度
 - 频率高（100-400HZ），相机和雷达的频率基本上只有几十赫兹
-- 不受外界干扰（磁力计可能受干扰），相机容易受到光照干扰
-- 价格不贵，基本上几十几百就可以买到（几万的也有）
+- 不受外界干扰（磁力计可能受干扰），相机容易受到光照干扰，雷达在雨雾天可能受干扰
+- 价格不贵，基本上几十几百就可以买到（几千几万的也有，但是一般精度的几十几百即可）
 
 ## 测量原理
 
@@ -667,21 +685,21 @@ IMU也就是惯性测量单元，是测量物体三轴姿态角（或角速率�
 
 ![CvLife_FAST-LIO_2023_22](./assets/CvLife_FAST-LIO_2023_22.png)
 
-加速度计实际上就是运用了胡克定律，也就是在弹簧固定下的质量块在有加速度的情况下会有位移，根据牛顿定律就可以知道加速度大小，当然在IMU中是使用电容计算位移的
+加速度计实际上就是运用了胡克定律，也就是在弹簧固定下的质量块在有加速度的情况下会有位移，根据牛顿第二定律就可以知道加速度大小，当然在IMU中是使用电容差计算位移进而计算加速度
 
-磁力计的工作原理跟指南针类似
+磁力计的工作原理跟指南针类似，通过霍尔效应计算磁场强度
 
 ## 误差模型
 
-IMU的误差可以分为确定误差（可以通过标定获取）和随机误差
+IMU的误差可以分为确定误差（可以通过标定获取，是一个确定值）和随机误差（也就是随机噪声，无法提取获取
 
 ![CvLife_FAST-LIO_2023_23](./assets/CvLife_FAST-LIO_2023_23.png)
 
-其中，偏置是会随着时间而变化的，所以还要在过程中不断标定或者说估计，很多紧耦合的框架都会在过程中不断估计
+其中，偏置是会随着时间而变化的，所以还要在 SLAM 过程中不断标定或者说估计，很多紧耦合的框架都会在过程中不断估计
 
 ## 测量模型
 
-世界坐标系为 G，IMU坐标系为 I
+世界坐标系为 G，IMU坐标系为 I，通常忽略 Scale
 
 ![CvLife_FAST-LIO_2023_24](./assets/CvLife_FAST-LIO_2023_24.png)
 
@@ -697,6 +715,22 @@ $$
 
 基于连续的数学运动模型考虑
 
+那么在 G 也就是全局坐标系下，连续运动的导数为
+$$
+\dot{R}=R \omega ^\land \\
+\dot{v}=a \\
+\dot{p}=v
+$$
+后面两个容易理解，速度求导为加速度，位置求导为速度
+
+对于第一个公式，我们假设一个从原点出发的向量 $r$ 绕某一个方向上的单位轴 $u$ 旋转，那么角速度为 $\omega =\dot{\theta }u$，角速度大小为 $\dot{\theta}$，那么根据刚体旋转动力学，任意点绕固定轴旋转的线速度由角速度向量和该点位置向量的叉乘确定
+$$
+\frac{\rm d r}{\rm d t}=\omega \times r
+$$
+那么，坐标系沿着单位轴旋转，其三个轴的导数
+
+  
+
 ![CvLife_FAST-LIO_2023_25](./assets/CvLife_FAST-LIO_2023_25.png)
 
 但是，机器无法处理连续数值，所以只能进行离散化才可以进一步处理，也就是进行欧拉积分，当然实际上也可以使用两帧之间的平均值计算（也就是中值积分）
@@ -709,6 +743,17 @@ $$
 
 ![CvLife_FAST-LIO_2023_27](./assets/CvLife_FAST-LIO_2023_27.png)
 
+## ROS1代码
+
+在 ROS1 中，使用 `sensor_msgs/Imu` 来作为消息类型传递 IMU 数据的，其中包括了四部分
+
+1. 头消息：`std_msgs/Header header`，其中包含时间戳 `stamp`，时间戳可以使用 toSec() 方法转换以便求时间差
+2. 四元数及协方差：`geometry_msgs/Quaternion orientation`，表示朝向，并且有协方差数组`float64[9] orientation_covariance`
+3. 角速度及协方差：`geometry_msgs/Vector3 angular_velocity` 和 `float64[9] angular_velocity_covariance`
+4. 加速度及协方差：`geometry_msgs/Vector3 Linear_velocity` 和 `float64[9] Linear_velocity_covariance`
+
+# 点云处理
+
 ## 激光雷达模型
 
 目前的激光雷达基本上是光学雷达，通过发射脉冲激光，基于飞行时间法测量距离（也有部分初级雷达使用三角测距法），并且多线雷达还会同时发射多组激光来感知环境
@@ -718,8 +763,6 @@ $$
 目前相对好的是混合固态的，相对机械式寿命相对更长，其中有大疆的Livox系列
 
 ![CvLife_FAST-LIO_2023_29](./assets/CvLife_FAST-LIO_2023_29.png)
-
-# 点云处理
 
 ## 点云运动畸变矫正
 
@@ -763,6 +806,20 @@ $$
 ![CvLife_FAST-LIO_2023_32](./assets/CvLife_FAST-LIO_2023_32.png)
 
 其中角点的残差计算方式如图，其中 $\widetilde{X}^L_{(k,i)}$ 表示第 $k$ 帧的第 $i$ 个点的坐标（波浪线表示已经乘以待优化位姿的坐标，也就是转到世界坐标系下的坐标），然后我们计算此点到近邻直线的距离
+
+## ROS1 代码
+
+点云是激光雷达产生的，而不同的激光雷达因为工作原理等不同，所以给出的点云格式也不同，这需要不同的厂家给出相应的代码从而得到 `sensor_msgs::PointCloud2` 格式的 ROS点云消息，然后我们需要使用 PCL 进行下采样和滤波操作
+
+```cpp
+pcl::PointCloud<rslidar_ros::Point> pl_orig;// shengc 
+pcl::fromROSMsg(msg,pl_orig);
+std::cout<<"lidar point size: "<<pl_orig.points.size()<<std::endl;
+
+pcl::VoxelGrid<pcl::PointXYZI>
+```
+
+
 
 # SLAM前端
 
@@ -866,33 +923,72 @@ LOAM框架是14年提出的三维激光框架，非常经典，后面的很多�
 
 ## FAST-LIO框架
 
+创新点有二：一是提出了一种紧耦合的迭代卡尔曼滤波方法，以此融合雷达特征点和 IMU，二是提出了新的卡尔曼滤波增益公式
+
 FAST-LIO的主体框架如下，输入部分是雷达和IMU，雷达的输入是100k-500kHz，实际上因为这是固态雷达，一个点就相当于一个采样，所以是一秒有100k-500k的点云输入，当然一个点是无法进行SLAM的，所以会积累几十或者上百k个单位的点之后才会作为一次输入送入SLAM（一般取决于里程计频率，比如说里程计频率为50Hz时，则在20ms内积累点云，成为一帧点云并处理一次，这20ms内的点云为一次scan），然后进行特征提取（方法与LOAM一致）；而IMU的输入会送入前向传播模块（这里传播的是状态量，也就是待估计的位移、偏置等），前向传播的目的有
 
 - 在两帧雷达数据之间有很多帧IMU数据，将这些IMU数据进行积分，得到位姿变化的估计
-- 传递误差量，尤其是传递误差量的协方差矩阵（在后面迭代更新的时候会用到）
+- 传递误差量，尤其是传递误差量的变化和协方差矩阵（在后面迭代更新的时候会用到）
 
 然后就是反向传播和运动补偿，因为进行了前向传播，所以每一帧的IMU都有一个预估的位姿，通过这个位姿对激光雷达点云数据进行运动补偿，降低运动产生的失真
 
-然后将补偿后的点云和预估的状态量进行一个残差的计算，然后通过误差状态卡尔曼滤波器进行迭代更新，如果收敛的话就进行一个里程计输出，否则继续进行迭代
+然后将补偿后的点云和预估的状态量进行一个残差的计算，然后通过误差状态卡尔曼滤波器进行迭代更新状态量，如果收敛的话就进行一个里程计输出，否则继续进行迭代
 
 收敛并且输出里程计之后，就会根据里程计信息或者说位姿信息，把新的点云插入到全局地图中去，当然也会在全局地图中根据位姿信息进行一个下采样，得到一个子地图，根据这个子地图去寻找近邻点进行匹配
 
 ![FAST-LIO_2](./assets/FAST-LIO_2.png)
 
-在一次scan的过程中，记录起止时间为 $t_{k-1}$ 和 $t_k$，后者为当前时刻，可以认为点云特征是在时间轴上均匀分布并且首尾对齐的，但是IMU的数据
+在一次scan的过程中，记录起止时间为 $t_{k-1}$ 和 $t_k$，后者为当前时刻，可以认为点云特征是在时间轴上均匀分布并且首尾对齐的，但是IMU的数据并非首尾对齐的，所以需要统一投影到当前时刻下或者说最后一帧点云下，这里使用 $\tau$ 和 $\rho$ 来表示 IMU 和 LiDAR 的时刻
+
+### 数学公式
+
+这里定义了一种广义的加减法或者说操作，首先我们定义 $\mathcal{M}$ 是流形，例如 $SO(3)$
+$$
+\boxplus : \mathcal{M} \times \mathbb{R}^n \rightarrow \mathcal{M} \quad \boxminus : \mathcal{M} \times \mathcal{M} \rightarrow \mathbb{R}^n
+$$
+如果 $\mathcal{M}$ 是李群，那么则有：
+$$
+R \boxplus r=R \exp(r)\quad R_1\boxminus R_2=\log(R^T_2R_1)
+$$
+如果是向量的话，那么广义加减就定义为向量的加减
+
+实际上就相当于使用了一个 C++ 中的运算重载，以此来方便运算
 
 ### IMU离散模型
 
-在模型中，当时间间隔为 $\Delta t$ 的时候，设状态量为 $x$，则离散模型可以表示为
+在模型中，当时间间隔为 $\Delta t$ 的时候，设状态量为 $x$，则离散模型中的数据可以表示为
 $$
-x_{i+1}=x_i \boxplus (\Delta tf(x_i,u_i,w_i))\\
 x = [^GR^T_I,^Gp^T_I,^Gv^T_I,b^T_w,b^T_a,^Gg^T]^T \in \mathcal{M}\\
 u = [w^T_m,a^T_m]^T\\
 w = [n^T_w,n^T_a,n^T_{bw},n^T_{ba}]
 $$
-其中 $i$ 是IMU测量的序号或者说索引，$x$ 是状态量，即为所有的待估计变量，共18维。可以看出我们要实时估计的是一个18维的量，它包含位置，姿态，速度以及IMU的参数。因此它是一个紧耦合的框架。
+其中$x$ 是状态量，即为所有的待估计变量，共18维，我们要实时估计的是一个18维的量，它包含旋转矩阵，位置，速度、角速度零偏、加速度零偏以及重力向量。因此它是一个紧耦合的框架。
 
-输入是 $u$ （也即加速度测量值）,$w$ 为所有的噪声量，包含测量噪声（前两项）和bias随机游走噪声（后两项）
+输入是 $u$ （也即加速度测量值）,$w$ 为所有的噪声量，包含测量噪声（前两项）和bias随机游走噪声（后两项），每一项都是三维的
+
+而论文中的离散模型如下所示
+$$
+x_{i+1}=x_i \boxplus (\Delta tf(x_i,u_i,w_i))\\
+$$
+ $i$ 是 IMU 测量的序号或者说索引，这个索引并不是整个过程中的，而是两帧 LiDAR 之间的索引，也就是每测量一帧的 LiDAR 都会执行一次上面的公式，然后重新计算 IMU 测量的索引
+
+其中
+$$
+f(x_i,u_i,w_i)=
+\left[\begin{array}{c}
+w_{mi}-b_{wi}-n_{wi}\\
+^Gv_{Ii}\\
+R_{Ii}(w_{mi}-b_{ai}-n_{ai})+^Gg_{i}\\
+n_{bwi}\\
+n_{ba}\\
+0_{3\times 1}
+\end{array}\right] 
+$$
+实际上广义加可以拆开来看，不同的位置单独执行广义计算
+
+### 状态估计
+
+这里使用 $x$ $\hat{x}$ he $$
 
 # 非线性优化
 
