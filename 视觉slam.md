@@ -238,13 +238,13 @@ R是一个正交矩阵，行列式为+1
 
    ![](https://pic3.zhimg.com/v2-aa06a0cd65ed3438c4a81417b56c0c0e_1440w.jpg)
 
-   其中有：$P=R_z(\alpha)P^\prime$
+   其中有：![](https://www.zhihu.com/equation?tex=P%3DR_z%28%5Calpha%29P%5E%5Cprime)
 
 2. 向量的旋转，其应用场景有机器人的姿态估计等，在这个情况下，点本身是发生了移动的，点围绕一个坐标系原点进行旋转
 
    ![](https://pic3.zhimg.com/v2-b6cc20098234793618dd553bb7e3621e_1440w.jpg)
 
-   其中有：$P=R_z(\alpha)P^\prime$
+   其中有：![](https://www.zhihu.com/equation?tex=P%3DR_z%28%5Calpha%29P%5E%5Cprime)
 
 实际上，上面两种物理意义下，矩阵乘法是一致的，也就是在这种矩阵乘法下，两种物理意义不冲突
 
@@ -706,9 +706,9 @@ IMU的误差可以分为确定误差（可以通过标定获取，是一个确�
 一般认为重力加速度不变，导数为零，偏置服从随机游走模型，其导数是高斯的
 
 所以，在世界坐标系下的速度等状态量如下
-$$
-^G\dot{p}_I=^Gv_I,^G\dot{v}_I=^{G}R_Ia_m
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5EG%5Cdot%7Bp%7D_I%3D%5EGv_I%2C%5EG%5Cdot%7Bv%7D_I%3D%5E%7BG%7DR_Ia_m%0A)
+
 
 
 ## 运动模型（连续+离散）
@@ -716,17 +716,15 @@ $$
 基于连续的数学运动模型考虑
 
 那么在 G 也就是全局坐标系下，连续运动的导数为
-$$
-\dot{R}=R \omega ^\land \\
-\dot{v}=a \\
-\dot{p}=v
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cdot%7BR%7D%3DR%20%5Comega%20%5E%5Cland%20%5C%5C%0A%5Cdot%7Bv%7D%3Da%20%5C%5C%0A%5Cdot%7Bp%7D%3Dv%0A)
+
 后面两个容易理解，速度求导为加速度，位置求导为速度
 
-对于第一个公式，我们假设一个从原点出发的向量 $r$ 绕某一个方向上的单位轴 $u$ 旋转，那么角速度为 $\omega =\dot{\theta }u$，角速度大小为 $\dot{\theta}$，那么根据刚体旋转动力学，任意点绕固定轴旋转的线速度由角速度向量和该点位置向量的叉乘确定
-$$
-\frac{\rm d r}{\rm d t}=\omega \times r
-$$
+对于第一个公式，我们假设一个从原点出发的向量 ![](https://www.zhihu.com/equation?tex=r) 绕某一个方向上的单位轴 ![](https://www.zhihu.com/equation?tex=u) 旋转，那么角速度为 ![](https://www.zhihu.com/equation?tex=%5Comega%20%3D%5Cdot%7B%5Ctheta%20%7Du)，角速度大小为 ![](https://www.zhihu.com/equation?tex=%5Cdot%7B%5Ctheta%7D)，那么根据刚体旋转动力学，任意点绕固定轴旋转的线速度由角速度向量和该点位置向量的叉乘确定
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cfrac%7B%5Crm%20d%20r%7D%7B%5Crm%20d%20t%7D%3D%5Comega%20%5Ctimes%20r%0A)
+
 那么，坐标系沿着单位轴旋转，其三个轴的导数
 
   
@@ -805,7 +803,7 @@ $$
 
 ![CvLife_FAST-LIO_2023_32](./assets/CvLife_FAST-LIO_2023_32.png)
 
-其中角点的残差计算方式如图，其中 $\widetilde{X}^L_{(k,i)}$ 表示第 $k$ 帧的第 $i$ 个点的坐标（波浪线表示已经乘以待优化位姿的坐标，也就是转到世界坐标系下的坐标），然后我们计算此点到近邻直线的距离
+其中角点的残差计算方式如图，其中 ![](https://www.zhihu.com/equation?tex=%5Cwidetilde%7BX%7D%5EL_%7B%28k%2Ci%29%7D) 表示第 ![](https://www.zhihu.com/equation?tex=k) 帧的第 ![](https://www.zhihu.com/equation?tex=i) 个点的坐标（波浪线表示已经乘以待优化位姿的坐标，也就是转到世界坐标系下的坐标），然后我们计算此点到近邻直线的距离
 
 ## ROS1 代码
 
@@ -827,11 +825,11 @@ pcl::VoxelGrid<pcl::PointXYZI>
 
 ## ICP方法
 
-这是一种经典方法，思想是两帧点云中距离最近的点是近邻点，下图中 $p_i$ 和 $q_i$ 是两帧点云，$u_p$ 和 $u_q$ 是两帧点云的求和
+这是一种经典方法，思想是两帧点云中距离最近的点是近邻点，下图中 ![](https://www.zhihu.com/equation?tex=p_i) 和 ![](https://www.zhihu.com/equation?tex=q_i) 是两帧点云，![](https://www.zhihu.com/equation?tex=u_p) 和 ![](https://www.zhihu.com/equation?tex=u_q) 是两帧点云的求和
 
 ![3DCVer_LOAM_L2_16](./assets/3DCVer_LOAM_L2_16.png)
 
-然后先后分布求解 $R$ 和 $T$
+然后先后分布求解 ![](https://www.zhihu.com/equation?tex=R) 和 ![](https://www.zhihu.com/equation?tex=T)
 
 ![3DCVer_LOAM_L2_17](./assets/3DCVer_LOAM_L2_17.png)
 
@@ -841,7 +839,7 @@ NDT方法也就是正态分布变换方法，是另一种经典的方法，思�
 
 ![3DCVer_LOAM_L2_18](./assets/3DCVer_LOAM_L2_18.png)
 
-如上图所示，对上一帧点云 $y$ 进行均值和协方差矩阵计算，得到了高斯形式的概率密度函数，然后使得概率乘积尽可能更大，然后使用极大似然估计方法进行求解
+如上图所示，对上一帧点云 ![](https://www.zhihu.com/equation?tex=y) 进行均值和协方差矩阵计算，得到了高斯形式的概率密度函数，然后使得概率乘积尽可能更大，然后使用极大似然估计方法进行求解
 
 ![](./assets/3DCVer_LOAM_L2_19.png)
 
@@ -938,57 +936,47 @@ FAST-LIO的主体框架如下，输入部分是雷达和IMU，雷达的输入是
 
 ![FAST-LIO_2](./assets/FAST-LIO_2.png)
 
-在一次scan的过程中，记录起止时间为 $t_{k-1}$ 和 $t_k$，后者为当前时刻，可以认为点云特征是在时间轴上均匀分布并且首尾对齐的，但是IMU的数据并非首尾对齐的，所以需要统一投影到当前时刻下或者说最后一帧点云下，这里使用 $\tau$ 和 $\rho$ 来表示 IMU 和 LiDAR 的时刻
+在一次scan的过程中，记录起止时间为 ![](https://www.zhihu.com/equation?tex=t_%7Bk-1%7D) 和 ![](https://www.zhihu.com/equation?tex=t_k)，后者为当前时刻，可以认为点云特征是在时间轴上均匀分布并且首尾对齐的，但是IMU的数据并非首尾对齐的，所以需要统一投影到当前时刻下或者说最后一帧点云下，这里使用 ![](https://www.zhihu.com/equation?tex=%5Ctau) 和 ![](https://www.zhihu.com/equation?tex=%5Crho) 来表示 IMU 和 LiDAR 的时刻
 
 ### 数学公式
 
-这里定义了一种广义的加减法或者说操作，首先我们定义 $\mathcal{M}$ 是流形，例如 $SO(3)$
-$$
-\boxplus : \mathcal{M} \times \mathbb{R}^n \rightarrow \mathcal{M} \quad \boxminus : \mathcal{M} \times \mathcal{M} \rightarrow \mathbb{R}^n
-$$
-如果 $\mathcal{M}$ 是李群，那么则有：
-$$
-R \boxplus r=R \exp(r)\quad R_1\boxminus R_2=\log(R^T_2R_1)
-$$
+这里定义了一种广义的加减法或者说操作，首先我们定义 ![](https://www.zhihu.com/equation?tex=%5Cmathcal%7BM%7D) 是流形，例如 ![](https://www.zhihu.com/equation?tex=SO%283%29)
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cboxplus%20%3A%20%5Cmathcal%7BM%7D%20%5Ctimes%20%5Cmathbb%7BR%7D%5En%20%5Crightarrow%20%5Cmathcal%7BM%7D%20%5Cquad%20%5Cboxminus%20%3A%20%5Cmathcal%7BM%7D%20%5Ctimes%20%5Cmathcal%7BM%7D%20%5Crightarrow%20%5Cmathbb%7BR%7D%5En%0A)
+
+如果 ![](https://www.zhihu.com/equation?tex=%5Cmathcal%7BM%7D) 是李群，那么则有：
+
+![](https://www.zhihu.com/equation?tex=%0AR%20%5Cboxplus%20r%3DR%20%5Cexp%28r%29%5Cquad%20R_1%5Cboxminus%20R_2%3D%5Clog%28R%5ET_2R_1%29%0A)
+
 如果是向量的话，那么广义加减就定义为向量的加减
 
 实际上就相当于使用了一个 C++ 中的运算重载，以此来方便运算
 
 ### IMU离散模型
 
-在模型中，当时间间隔为 $\Delta t$ 的时候，设状态量为 $x$，则离散模型中的数据可以表示为
-$$
-x = [^GR^T_I,^Gp^T_I,^Gv^T_I,b^T_w,b^T_a,^Gg^T]^T \in \mathcal{M}\\
-u = [w^T_m,a^T_m]^T\\
-w = [n^T_w,n^T_a,n^T_{bw},n^T_{ba}]
-$$
-其中$x$ 是状态量，即为所有的待估计变量，共18维，我们要实时估计的是一个18维的量，它包含旋转矩阵，位置，速度、角速度零偏、加速度零偏以及重力向量。因此它是一个紧耦合的框架。
+在模型中，当时间间隔为 ![](https://www.zhihu.com/equation?tex=%5CDelta%20t) 的时候，设状态量为 ![](https://www.zhihu.com/equation?tex=x)，则离散模型中的数据可以表示为
 
-输入是 $u$ （也即加速度测量值）,$w$ 为所有的噪声量，包含测量噪声（前两项）和bias随机游走噪声（后两项），每一项都是三维的
+![](https://www.zhihu.com/equation?tex=%0Ax%20%3D%20%5B%5EGR%5ET_I%2C%5EGp%5ET_I%2C%5EGv%5ET_I%2Cb%5ET_w%2Cb%5ET_a%2C%5EGg%5ET%5D%5ET%20%5Cin%20%5Cmathcal%7BM%7D%5C%5C%0Au%20%3D%20%5Bw%5ET_m%2Ca%5ET_m%5D%5ET%5C%5C%0Aw%20%3D%20%5Bn%5ET_w%2Cn%5ET_a%2Cn%5ET_%7Bbw%7D%2Cn%5ET_%7Bba%7D%5D%0A)
+
+其中![](https://www.zhihu.com/equation?tex=x) 是状态量，即为所有的待估计变量，共18维，我们要实时估计的是一个18维的量，它包含旋转矩阵，位置，速度、角速度零偏、加速度零偏以及重力向量。因此它是一个紧耦合的框架。
+
+输入是 ![](https://www.zhihu.com/equation?tex=u) （也即加速度测量值）,![](https://www.zhihu.com/equation?tex=w) 为所有的噪声量，包含测量噪声（前两项）和bias随机游走噪声（后两项），每一项都是三维的
 
 而论文中的离散模型如下所示
-$$
-x_{i+1}=x_i \boxplus (\Delta tf(x_i,u_i,w_i))\\
-$$
- $i$ 是 IMU 测量的序号或者说索引，这个索引并不是整个过程中的，而是两帧 LiDAR 之间的索引，也就是每测量一帧的 LiDAR 都会执行一次上面的公式，然后重新计算 IMU 测量的索引
+
+![](https://www.zhihu.com/equation?tex=%0Ax_%7Bi%2B1%7D%3Dx_i%20%5Cboxplus%20%28%5CDelta%20tf%28x_i%2Cu_i%2Cw_i%29%29%5C%5C%0A)
+
+ ![](https://www.zhihu.com/equation?tex=i) 是 IMU 测量的序号或者说索引，这个索引并不是整个过程中的，而是两帧 LiDAR 之间的索引，也就是每测量一帧的 LiDAR 都会执行一次上面的公式，然后重新计算 IMU 测量的索引
 
 其中
-$$
-f(x_i,u_i,w_i)=
-\left[\begin{array}{c}
-w_{mi}-b_{wi}-n_{wi}\\
-^Gv_{Ii}\\
-R_{Ii}(w_{mi}-b_{ai}-n_{ai})+^Gg_{i}\\
-n_{bwi}\\
-n_{ba}\\
-0_{3\times 1}
-\end{array}\right] 
-$$
+
+![](https://www.zhihu.com/equation?tex=%0Af%28x_i%2Cu_i%2Cw_i%29%3D%0A%5Cleft%5B%5Cbegin%7Barray%7D%7Bc%7D%0Aw_%7Bmi%7D-b_%7Bwi%7D-n_%7Bwi%7D%5C%5C%0A%5EGv_%7BIi%7D%5C%5C%0AR_%7BIi%7D%28w_%7Bmi%7D-b_%7Bai%7D-n_%7Bai%7D%29%2B%5EGg_%7Bi%7D%5C%5C%0An_%7Bbwi%7D%5C%5C%0An_%7Bba%7D%5C%5C%0A0_%7B3%5Ctimes%201%7D%0A%5Cend%7Barray%7D%5Cright%5D%20%0A)
+
 实际上广义加可以拆开来看，不同的位置单独执行广义计算
 
 ### 状态估计
 
-这里使用 $x$ $\hat{x}$ he $$
+这里使用 ![](https://www.zhihu.com/equation?tex=x) ![](https://www.zhihu.com/equation?tex=%5Chat%7Bx%7D) he ![](https://www.zhihu.com/equation?tex=)
 
 # 非线性优化
 
