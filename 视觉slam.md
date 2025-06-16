@@ -560,18 +560,9 @@ R是一个正交矩阵，行列式为+1
 实际上这是一个似曾相识的结果——罗德里格斯公式
 
 而从旋转矩阵到旋转向量的公式如下
-$$
-R = \cos\theta I + (1 - \cos\theta) a a^T + \sin\theta a^\wedge\\
-\begin{align}
-tr(R) &= \cos\theta tr(I) + (1 - \cos\theta) tr(a a^T) + \sin\theta tr(a^\wedge)\\
 
-&= 3\cos\theta + (1 - \cos\theta) = 1 + 2\cos\theta\\
-\end{align}\\
-\theta = \arccos\left(\frac{tr(R) - 1}{2}\right)\\
+![](https://www.zhihu.com/equation?tex=%0AR%20%3D%20%5Ccos%5Ctheta%20I%20%2B%20%281%20-%20%5Ccos%5Ctheta%29%20a%20a%5ET%20%2B%20%5Csin%5Ctheta%20a%5E%5Cwedge%5C%5C%0A%5Cbegin%7Balign%7D%0Atr%28R%29%20%26%3D%20%5Ccos%5Ctheta%20tr%28I%29%20%2B%20%281%20-%20%5Ccos%5Ctheta%29%20tr%28a%20a%5ET%29%20%2B%20%5Csin%5Ctheta%20tr%28a%5E%5Cwedge%29%5C%5C%0A%0A%26%3D%203%5Ccos%5Ctheta%20%2B%20%281%20-%20%5Ccos%5Ctheta%29%20%3D%201%20%2B%202%5Ccos%5Ctheta%5C%5C%0A%5Cend%7Balign%7D%5C%5C%0A%5Ctheta%20%3D%20%5Carccos%5Cleft%28%5Cfrac%7Btr%28R%29%20-%201%7D%7B2%7D%5Cright%29%5C%5C%0A%0A%0AR%20a%20%3D%20a%5C%5C%0A)
 
-
-R a = a\\
-$$
 so(3) 的物理意义就是旋转向量，即so(3)的李代数空间就是由旋转向量组成的线性空间。如果李群(旋转矩阵，R(t)，类似一个函数)代表一个球面，那么球上所有点的切线(单位元处李群的切空间李代数，旋转向量)，也会组成一个球面，而且这个球面和原来的球面一样。
 
 ![1717332083843](./assets/1717332083843.png)
@@ -766,7 +757,7 @@ IMU的误差可以分为确定误差（可以通过标定获取，是一个确�
 
 ## 使用方法
 
-IMU 的用途主要是作为先验估计来优化激光点，在实际中，我们希望是所有点云在同一时刻的采样，但是激光雷达的采样频率相对较慢而且存在运动畸变，而 IMU 的采样频率则非常高，所以可以使用 IMU 来去除畸变，并且把所有的点云统一到同一个时刻进行处理，文中是在 **tk** 时刻。因此，我们根据 IMU 积分估计的位姿，把 $t_{k-1}$ 每个点转到 **tk** 时刻。即同一时刻与同一位姿，发射与接受激光束。
+IMU 的用途主要是作为先验估计来优化激光点，在实际中，我们希望是所有点云在同一时刻的采样，但是激光雷达的采样频率相对较慢而且存在运动畸变，而 IMU 的采样频率则非常高，所以可以使用 IMU 来去除畸变，并且把所有的点云统一到同一个时刻进行处理，文中是在 **tk** 时刻。因此，我们根据 IMU 积分估计的位姿，把 ![](https://www.zhihu.com/equation?tex=t_%7Bk-1%7D) 每个点转到 **tk** 时刻。即同一时刻与同一位姿，发射与接受激光束。
 
 ![lidar_proj_by_imu](./assets/lidar_proj_by_imu.png)
 
@@ -930,24 +921,20 @@ for(size_t i = startIdx，regionIdx = 0; i <= endIdx;i++，regionIdx++){
 
 假设在相邻时刻，相机分别观测到两个图像，并且在其中匹配到了对应点，如何求两个图像对应位姿之间的位姿变换
 
-假设对应点的齐次像素坐标为 $p_1$ 和 $p_2$，那么在两个时刻的相机坐标系下有下面的公式，其中相机内参矩阵已知
-$$
-p_1=KP_{C1}\\
-p_2=KP_{C2}
-$$
+假设对应点的齐次像素坐标为 ![](https://www.zhihu.com/equation?tex=p_1) 和 ![](https://www.zhihu.com/equation?tex=p_2)，那么在两个时刻的相机坐标系下有下面的公式，其中相机内参矩阵已知
+
+![](https://www.zhihu.com/equation?tex=%0Ap_1%3DKP_%7BC1%7D%5C%5C%0Ap_2%3DKP_%7BC2%7D%0A)
+
 
 那么以第一个相机坐标系为基准（或者为世界坐标系的话），那么有
-$$
-P_{C2}=RP_{C1}+t\\
-K^{-1}p_2=P_{C2}=RP_{C1}+t=RK^{-1}p_{1}+t\\
-t^\wedge K^{-1}p_2=t^\wedge R K^{-1}p_{1}+t^\wedge t\\
-其中，向量与自身的叉乘为零
-$$
-然后左边乘以 $(K^{-1}p_2)^T$，其中左侧为 $t^\wedge K^{-1}p_2$，也就是 t 与向量的叉乘，方向上垂直于此向量，再进行与向量的点乘结果为0，故有
-$$
-(K^{-1}p_2)^Tt^\wedge R K^{-1}p_{1}=p_2^TK^{-T}t^\wedge R K^{-1}p_{1}=0
-$$
-其中本质矩阵 E 为 $t^\wedge R$，也就是我们所要求解的核心内容，如果有若干组匹配点，即可使用线性方程组解法进行求解，而且在大量约束的情况下，得到的旋转矩阵会相对准确，但是因为缺失了尺度的原因，无法得到准确的位移
+
+![](https://www.zhihu.com/equation?tex=%0AP_%7BC2%7D%3DRP_%7BC1%7D%2Bt%5C%5C%0AK%5E%7B-1%7Dp_2%3DP_%7BC2%7D%3DRP_%7BC1%7D%2Bt%3DRK%5E%7B-1%7Dp_%7B1%7D%2Bt%5C%5C%0At%5E%5Cwedge%20K%5E%7B-1%7Dp_2%3Dt%5E%5Cwedge%20R%20K%5E%7B-1%7Dp_%7B1%7D%2Bt%5E%5Cwedge%20t%5C%5C%0A%E5%85%B6%E4%B8%AD%EF%BC%8C%E5%90%91%E9%87%8F%E4%B8%8E%E8%87%AA%E8%BA%AB%E7%9A%84%E5%8F%89%E4%B9%98%E4%B8%BA%E9%9B%B6%0A)
+
+然后左边乘以 ![](https://www.zhihu.com/equation?tex=%28K%5E%7B-1%7Dp_2%29%5ET)，其中左侧为 ![](https://www.zhihu.com/equation?tex=t%5E%5Cwedge%20K%5E%7B-1%7Dp_2)，也就是 t 与向量的叉乘，方向上垂直于此向量，再进行与向量的点乘结果为0，故有
+
+![](https://www.zhihu.com/equation?tex=%0A%28K%5E%7B-1%7Dp_2%29%5ETt%5E%5Cwedge%20R%20K%5E%7B-1%7Dp_%7B1%7D%3Dp_2%5ETK%5E%7B-T%7Dt%5E%5Cwedge%20R%20K%5E%7B-1%7Dp_%7B1%7D%3D0%0A)
+
+其中本质矩阵 E 为 ![](https://www.zhihu.com/equation?tex=t%5E%5Cwedge%20R)，也就是我们所要求解的核心内容，如果有若干组匹配点，即可使用线性方程组解法进行求解，而且在大量约束的情况下，得到的旋转矩阵会相对准确，但是因为缺失了尺度的原因，无法得到准确的位移
 
 # VIO
 
@@ -1071,24 +1058,23 @@ FAST-LIO的主体框架如下图所示，输入部分是雷达和IMU，雷达的
 ### 前向传播
 
 前向传播有两个内容，第一个就是基于IMU积分计算一个粗略的状态量，这个状态量用于后续的反向传播来补偿运动失真
-$$
-\hat{x}_{i+1}=\hat{x}_i\boxplus (\Delta tf(\hat{x}_i,u_i,0)),\hat{x}_0=\bar{x}_{k-1}
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Chat%7Bx%7D_%7Bi%2B1%7D%3D%5Chat%7Bx%7D_i%5Cboxplus%20%28%5CDelta%20tf%28%5Chat%7Bx%7D_i%2Cu_i%2C0%29%29%2C%5Chat%7Bx%7D_0%3D%5Cbar%7Bx%7D_%7Bk-1%7D%0A)
+
 其中的时间差表示的是相邻两帧 IMU 的时间差，噪声量为0是因为不知道噪声的实际大小，因此在传播过程中设为0，但是会在后续的误差状态方程中考虑噪声
 
 这个公式与离散模型公式一致，我们每接收一个 IMU 都会进行一次上述计算，直到计算到最后一个 IMU 帧为止。
 
 另一个内容是传播误差量，并计算对应的协方差矩阵。这里的问题是我们不知道真值，怎么计算误差呢？实际上，我们计算的误差量，也是一个近似值，因此它才会有对应的协方差矩阵来评判置信度。和传统的卡尔曼滤波器不同的是，传统的卡尔曼滤波器直接估计状态量，它的运动方程和观测方程通常长这样：
-$$
-x_k=f(x_{k-1},u_k)+w_k\\
-z_k=h(x_k)+v_k
-$$
-而文中使用的误差状态卡尔曼滤波器(Error state Kalman flter，ESKF)，以误差量作为待估计量，也就是把上式的 x 用 $\widetilde{x}$ 代替
+
+![](https://www.zhihu.com/equation?tex=%0Ax_k%3Df%28x_%7Bk-1%7D%2Cu_k%29%2Bw_k%5C%5C%0Az_k%3Dh%28x_k%29%2Bv_k%0A)
+
+而文中使用的误差状态卡尔曼滤波器(Error state Kalman flter，ESKF)，以误差量作为待估计量，也就是把上式的 x 用 ![](https://www.zhihu.com/equation?tex=%5Cwidetilde%7Bx%7D) 代替
 
 我们现在要估计的是误差量，而不是直接估计状态量。而有了误差量的估计，再直接加上状态量的估计就是我们求得的最优估计，其中误差量
-$$
-\widetilde{x}_{k-1}=x_{k-1}\boxminus \bar{x}_{k-1}
-$$
+
+![](https://www.zhihu.com/equation?tex=%0A%5Cwidetilde%7Bx%7D_%7Bk-1%7D%3Dx_%7Bk-1%7D%5Cboxminus%20%5Cbar%7Bx%7D_%7Bk-1%7D%0A)
+
 
 
 这将带来以下好处:

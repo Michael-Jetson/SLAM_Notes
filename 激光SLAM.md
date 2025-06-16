@@ -117,10 +117,10 @@
 
 ![Shenlan_LidarSLAM_L_8](./assets/Shenlan_LidarSLAM_L3_8.png)
 
-当然，实际上激光雷达数学模型就是激光雷达的观测模型，认为在 t 时刻的位置 $x_t$ 和地图 $m$ 下，激光雷达观测到 $z_t$ 这一帧的概率，同时我们认为每一个激光束相互独立，所以可以拆解为下面公式，因为实际上观测到的一帧实际上就是观测到若干个点
-$$
-p(z_t|x_t,m)=\prod_{k=1}^K p(z^k_t|x_t,m)
-$$
+当然，实际上激光雷达数学模型就是激光雷达的观测模型，认为在 t 时刻的位置 ![](https://www.zhihu.com/equation?tex=x_t) 和地图 ![](https://www.zhihu.com/equation?tex=m) 下，激光雷达观测到 ![](https://www.zhihu.com/equation?tex=z_t) 这一帧的概率，同时我们认为每一个激光束相互独立，所以可以拆解为下面公式，因为实际上观测到的一帧实际上就是观测到若干个点
+
+![](https://www.zhihu.com/equation?tex=%0Ap%28z_t%7Cx_t%2Cm%29%3D%5Cprod_%7Bk%3D1%7D%5EK%20p%28z%5Ek_t%7Cx_t%2Cm%29%0A)
+
 当然也可以把上面的概率记为得分，描述观测帧与地图重合的程度，这实际上就是我们的观测模型，而光束模型实际上是没人使用的，原因有二
 
 1. 期望值的计算需要用raytracing，每一个位姿需要进行N此raytracing，N为一帧激光的激光束数量。但是这个 raytracing 非常依赖结构化环境
@@ -213,10 +213,10 @@ $$
 
 所以有了新的方法，VICP，这是一种考虑了机器人运动的方法，这种方法会校正激光的运动畸变，在匹配的同时也会估计机器人的速度，不过其假设机器人是匀速运动，相对于激光较低的频率，这种假设并不成立，不过总的来说比 ICP 更加良好
 
-首先有两帧点云 $X^i$ 和 $X^{i-1}$，也就是第 i 帧和第 i-1 帧，然后相应的位姿矩阵为 $T_i$ 和 $T_{i-1}$，然后可以根据李代数计算出机器人的速度，其中的的时间差是每一帧中两次点云的时间差
-$$
-V_i=\frac{1}{\Delta t}\log (T^{-1}_{i-1}T_i)
-$$
+首先有两帧点云 ![](https://www.zhihu.com/equation?tex=X%5Ei) 和 ![](https://www.zhihu.com/equation?tex=X%5E%7Bi-1%7D)，也就是第 i 帧和第 i-1 帧，然后相应的位姿矩阵为 ![](https://www.zhihu.com/equation?tex=T_i) 和 ![](https://www.zhihu.com/equation?tex=T_%7Bi-1%7D)，然后可以根据李代数计算出机器人的速度，其中的的时间差是每一帧中两次点云的时间差
+
+![](https://www.zhihu.com/equation?tex=%0AV_i%3D%5Cfrac%7B1%7D%7B%5CDelta%20t%7D%5Clog%20%28T%5E%7B-1%7D_%7Bi-1%7DT_i%29%0A)
+
 然后就可以得到第 i 帧的时刻表，然后可以对李代数进行切分并转化为李群也就是旋转矩阵，并矫正点云，之后再进行 ICP
 
 ![Shenlan_LidarSLAM_L3_19](./assets/Shenlan_LidarSLAM_L3_19.png)
@@ -239,8 +239,8 @@ VICP 中，匀速运动假设难以成立，并且数据预处理和状态估计
 
 这种方法的实现相对复杂一点，已知数据有：
 
-- 当前帧激光的起止时间 $t_s$ 和 $t_e$
-- 两个激光束之间的时间差 $\Delta t$，或者说是两个激光点之间的时间差，与扫描频率有关
+- 当前帧激光的起止时间 ![](https://www.zhihu.com/equation?tex=t_s) 和 ![](https://www.zhihu.com/equation?tex=t_e)
+- 两个激光束之间的时间差 ![](https://www.zhihu.com/equation?tex=%5CDelta%20t)，或者说是两个激光点之间的时间差，与扫描频率有关
 - 里程计数据队列，按照时间顺序排列，队首的时间最早，并且里程计数据队列的时间区间包括了激光帧的时间区间
 
 所以我们的任务就是：
@@ -251,7 +251,7 @@ VICP 中，匀速运动假设难以成立，并且数据预处理和状态估计
 
 具体的计算实际上分为两步：
 
-- 第一步是求解中间时刻的位姿，基于线性插值的方法和起止时刻的位姿，计算出来中间任意时刻的位姿，比如说在 l、k 时刻有位姿 $p_l$ 、$p_k$，则 s 时刻位姿为 $p_s=LinearInterp(p_l,p_k,\frac{s-l}{k-l})$
+- 第一步是求解中间时刻的位姿，基于线性插值的方法和起止时刻的位姿，计算出来中间任意时刻的位姿，比如说在 l、k 时刻有位姿 ![](https://www.zhihu.com/equation?tex=p_l) 、![](https://www.zhihu.com/equation?tex=p_k)，则 s 时刻位姿为 ![](https://www.zhihu.com/equation?tex=p_s%3DLinearInterp%28p_l%2Cp_k%2C%5Cfrac%7Bs-l%7D%7Bk-l%7D%29)
 
 - 第二步有两种方法
 

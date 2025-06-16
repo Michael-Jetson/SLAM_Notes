@@ -50,10 +50,10 @@ ceres::Solve(options, &problem, &summary);
 ![](https://i-blog.csdnimg.cn/blog_migrate/07d2b1f7335008eaec4a25c5e024facf.png)
 
 一个贝叶斯网络的概率公式如下：
-$$
-p(\Theta)=\prod_{i=0}p(\theta_j|\pi_j)
-$$
-其中 $\pi_j$ 为 $\theta_j$ 的父节点（后者是在前者的状态上获取的，或者说后者依赖于前者），$p(\theta_j|\pi_j)$ 表示了条件概率密度
+
+![](https://www.zhihu.com/equation?tex=%0Ap%28%5CTheta%29%3D%5Cprod_%7Bi%3D0%7Dp%28%5Ctheta_j%7C%5Cpi_j%29%0A)
+
+其中 ![](https://www.zhihu.com/equation?tex=%5Cpi_j) 为 ![](https://www.zhihu.com/equation?tex=%5Ctheta_j) 的父节点（后者是在前者的状态上获取的，或者说后者依赖于前者），![](https://www.zhihu.com/equation?tex=p%28%5Ctheta_j%7C%5Cpi_j%29) 表示了条件概率密度
 
 ## 因子图
 
